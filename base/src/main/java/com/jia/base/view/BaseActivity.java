@@ -2,19 +2,18 @@ package com.jia.base.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.EventBusUtils;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-import butterknife.ButterKnife;
 
 /**
  * Description: Activity基类
  * Created by jia on 2018/3/27.
  * 人之所以能，是相信能。
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends RxAppCompatActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
