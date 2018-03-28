@@ -7,6 +7,8 @@ import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.EventBusUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import butterknife.ButterKnife;
+
 /**
  * Description: Activity 基类
  * Created by jia on 2018/1/19.
