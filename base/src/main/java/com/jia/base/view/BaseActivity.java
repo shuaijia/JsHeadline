@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.EventBusUtils;
 
+import butterknife.ButterKnife;
+
 /**
  * Description: Activity基类
  * Created by jia on 2018/3/27.
