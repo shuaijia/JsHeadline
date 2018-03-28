@@ -4,6 +4,7 @@ import android.util.Log;
 
 
 import com.jia.libnet.basemodel.BaseModel;
+import com.jia.libnet.exception.ExceptionEngine;
 
 import rx.Subscriber;
 
@@ -20,16 +21,16 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
-        Log.e("TAG", "onError: "+e.toString() );
-        onFail("网络错误");
+        Log.e("TAG", "onError: " + e.toString());
+        onFail(ExceptionEngine.handleException(e));
     }
 
     @Override
     public void onNext(T t) {
         if (t instanceof BaseModel) {
-            if (t == null){
+            if (t == null) {
                 onFail("未请求到数据");
-            }else if (!((BaseModel) t).getErrorCode().equals("1")) {
+            } else if (!((BaseModel) t).getErrorCode().equals("1")) {
                 onFail(((BaseModel) t).getErrorMsg());
             } else {
                 onSuccess(t);
