@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 26
@@ -39,10 +38,6 @@ dependencies {
 
     // 事件总线
     compile 'org.greenrobot:eventbus:3.0.0'
-
-    // 黄油刀
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // RxLifecycle
     compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'

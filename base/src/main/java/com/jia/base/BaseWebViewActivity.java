@@ -2,16 +2,19 @@ package com.jia.base;
 
 import android.os.Bundle;
 
+import com.jia.base.annotation.BindEventBus;
+
 /**
  * Description:
  * Created by jia on 2018/3/29.
  * 人之所以能，是相信能。
  */
-
+@BindEventBus
 public class BaseWebViewActivity extends BaseActivity {
+
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
-
+        setContentView(R.layout.activity_webview);
     }
 
     @Override

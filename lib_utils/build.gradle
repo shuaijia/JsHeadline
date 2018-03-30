@@ -31,4 +31,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // 工具类库 api查看： https://github.com/Blankj/AndroidUtilCode/blob/master/utilcode/README-CN.md
+    compile 'com.blankj:utilcode:1.13.6'
 }
