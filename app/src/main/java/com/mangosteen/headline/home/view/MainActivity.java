@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.tv)
     TextView tv;
 
+
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
