@@ -1,1 +1,1 @@
-include ':app', ':lib_net', ':lib_utils', ':lib_ui', ':base'
+include ':app', ':lib_net', ':lib_utils', ':lib_ui', ':base', ':module_news', ':module_picture', ':module_video'

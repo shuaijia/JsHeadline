@@ -13,6 +13,9 @@
             <option value="$PROJECT_DIR$/lib_net" />
             <option value="$PROJECT_DIR$/lib_ui" />
             <option value="$PROJECT_DIR$/lib_utils" />
+            <option value="$PROJECT_DIR$/module_news" />
+            <option value="$PROJECT_DIR$/module_picture" />
+            <option value="$PROJECT_DIR$/module_video" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

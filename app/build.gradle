@@ -36,7 +36,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile project(':base')
+    compile project(':module_news')
+    compile project(':module_picture')
+    compile project(':module_video')
+
 
     // 黄油刀 每个用到黄油刀的module都需要依赖
     implementation 'com.jakewharton:butterknife:8.8.1'

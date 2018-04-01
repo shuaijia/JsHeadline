@@ -44,4 +44,6 @@ dependencies {
     compile 'com.zhy:flowlayout-lib:1.0.3'
     // 指示器
     compile 'me.relex:circleindicator:1.2.2@aar'
+    //质感设计
+    compile 'com.android.support:design:26.0.0-alpha1'
 }

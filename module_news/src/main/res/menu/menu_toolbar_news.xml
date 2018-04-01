@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--右侧搜索操作条目-->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_launcher"
+        android:title="搜索"
+        app:showAsAction="ifRoom" />
+
+    <!--右侧添加操作条目-->
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_launcher"
+        android:title="添加"
+        app:showAsAction="ifRoom" />
+
+    <!--右侧设置条目，收起，不显示-->
+    <item
+        android:id="@+id/action_setting"
+        android:icon="@drawable/ic_launcher"
+        android:title="设置"
+        app:showAsAction="never" />
+
+    <!--右侧设置帮助条目，收起，不显示-->
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_launcher"
+        android:title="帮助"
+        app:showAsAction="never" />
+
+</menu>
