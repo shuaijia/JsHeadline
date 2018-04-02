@@ -10,7 +10,7 @@ import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
 
 /**
- *  列表界面
+ * 列表界面
  * Created by jia on 2018/3/31.
  */
 
@@ -27,7 +27,18 @@ public class NewsPagerFragment extends BaseFragment {
 
     @Override
     protected void initFragmentChildView(View view) {
-        refresh_layout=view.findViewById(R.id.refresh_layout);
+        refresh_layout = view.findViewById(R.id.refresh_layout);
+        refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh_layout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refresh_layout.setRefreshing(false);
+                    }
+                }, 500);
+            }
+        });
 //        recycler_view=view.findViewById(R.id.recycler_view);
     }
 
