@@ -11,64 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/recycler_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:fadeScrollbars="true"-->
-            <!--android:scrollbarFadeDuration="1"-->
-            <!--android:scrollbars="vertical"-->
-            <!--app:layoutManager="LinearLayoutManager"/>-->
-
-        <android.support.v4.widget.NestedScrollView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@color/Blue"
-                    android:layout_marginTop="10dp"/>
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:scrollbarFadeDuration="1"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -1,6 +1,7 @@
 package com.jia.libnet;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.jia.libnet.bean.news.NewsBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +14,10 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Description:
@@ -29,6 +33,7 @@ public class HttpMethod {
 
     private Retrofit retrofit;
 
+    private BaseService service;
 
     // 私有构造
     public HttpMethod() {
@@ -104,6 +109,7 @@ public class HttpMethod {
                 .baseUrl(NetConfig.BASE_URL)
                 .build();
 
+        service = retrofit.create(BaseService.class);
     }
 
     /**
@@ -115,6 +121,15 @@ public class HttpMethod {
         return retrofit;
     }
 
+    //在访问HttpMethods时创建单例
+    private static class SingletonHolder {
+        private static final HttpMethod INSTANCE = new HttpMethod();
+    }
+
+    // 获取单例
+    public static HttpMethod getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
 
     /**
      * 用来统一处理Http的resultCode,并将HttpResult的Data部分剥离出来返回给subscriber
@@ -132,4 +147,11 @@ public class HttpMethod {
         }
     }
 
+    public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber){
+        service.getNewsByTag("2", category,as)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
 }

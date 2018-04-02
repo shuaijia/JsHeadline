@@ -45,7 +45,7 @@ public class NewsFragment extends BaseFragment {
     protected void initFragmentData(Bundle savedInstanceState) {
         mTitles.add("推荐");
         mTitles.add("热点");
-        mTitles.add("视频");
+        mTitles.add("体育");
         mTitles.add("社会");
         mTitles.add("娱乐");
         mTitles.add("科技");

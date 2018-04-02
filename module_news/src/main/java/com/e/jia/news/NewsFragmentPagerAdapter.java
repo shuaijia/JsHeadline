@@ -27,7 +27,31 @@ public class NewsFragmentPagerAdapter extends FragmentPagerAdapter {
         if (position < mFragments.size()) {
             return mFragments.get(position);
         } else {
-            Fragment fragment = new NewsPagerFragment();
+            NewsPagerFragment fragment = new NewsPagerFragment();
+
+            switch (position){
+                case 0:
+                    fragment.setTag("__all__");
+                    break;
+                case 1:
+                    fragment.setTag("news_hot");
+                    break;
+                case 2:
+                    fragment.setTag("news_sports");
+                    break;
+                case 3:
+                    fragment.setTag("news_society");
+                    break;
+                case 4:
+                    fragment.setTag("news_entertainment");
+                    break;
+                case 5:
+                    fragment.setTag("news_tech");
+                    break;
+                case 6:
+                    fragment.setTag("news_game");
+                    break;
+            }
             mFragments.add(fragment);
             return fragment;
         }

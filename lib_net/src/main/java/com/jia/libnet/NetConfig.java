@@ -10,6 +10,6 @@ public class NetConfig {
     /**
      * base url
      */
-    public static String BASE_URL = "http://training.sac.net.cn";
+    public static String BASE_URL = "http://m.toutiao.com/";
 
 }
