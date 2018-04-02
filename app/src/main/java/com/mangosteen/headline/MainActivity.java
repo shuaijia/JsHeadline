@@ -38,7 +38,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private static final int TAB_NEWS = 0;
     private static final int TAB_PICTURE = 1;
     private static final int TAB_VIDEO = 2;
-    private static final int TAB_HEADLINE = 3;
 
     @BindView(R.id.tab_bottom)
     TabLayout mTabLayout;
@@ -49,11 +48,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     @BindView(R.id.drawer)
     DrawerLayout drawer;
 
-    private String[] titles = {"新闻", "图片", "视频", "头条号"};
+    private String[] titles = {"新闻", "图片", "视频"};
     private Fragment mNewsFragment;
     private Fragment mPictureFragment;
     private Fragment mVideoFragment;
-    private Fragment mHeadlineFragment;
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
@@ -91,6 +89,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
             mTabLayout.addTab(tab); //添加到tabLayout中
         }
 
+        mTabLayout.getTabAt(0).setIcon(R.drawable.selector_main_tab_news);
+        mTabLayout.getTabAt(1).setIcon(R.drawable.selector_main_tab_img);
+        mTabLayout.getTabAt(2).setIcon(R.drawable.selector_main_tab_video);
         mTabLayout.addOnTabSelectedListener(this);
     }
 
@@ -167,15 +168,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                 }
                 toolbar.setTitle("视频");
                 break;
-            case TAB_HEADLINE:
-                if (mHeadlineFragment == null) {
-                    mHeadlineFragment = new VideoFragment();
-                    transaction.add(R.id.frag_container, mHeadlineFragment);
-                } else {
-                    transaction.show(mHeadlineFragment);
-                }
-                toolbar.setTitle("头条号");
-                break;
         }
         transaction.commit();
     }
@@ -184,7 +176,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         if (mNewsFragment != null) transaction.hide(mNewsFragment);
         if (mPictureFragment != null) transaction.hide(mPictureFragment);
         if (mVideoFragment != null) transaction.hide(mVideoFragment);
-        if (mHeadlineFragment != null) transaction.hide(mHeadlineFragment);
     }
 
     @Override
