@@ -10,6 +10,7 @@ import android.view.View;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
 import com.jia.libnet.HttpMethod;
+import com.jia.libnet.ToutiaoUtil;
 import com.jia.libnet.bean.news.NewsBean;
 
 import rx.Subscriber;
@@ -51,7 +52,7 @@ public class NewsPagerFragment extends BaseFragment {
 
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
-        HttpMethod.getInstance().getNewsByTag(tag, "A1D5D87595C3288", new Subscriber<NewsBean>() {
+        HttpMethod.getInstance().getNewsByTag(tag, ToutiaoUtil.getAsCp().get("as"), new Subscriber<NewsBean>() {
             @Override
             public void onCompleted() {
 
