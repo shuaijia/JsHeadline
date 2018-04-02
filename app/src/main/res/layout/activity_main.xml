@@ -17,7 +17,6 @@
             android:id="@+id/frag_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/tab_bottom"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <android.support.design.widget.TabLayout
@@ -27,6 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             app:tabIndicatorHeight="0dp"
+            android:background="@color/white"
             app:tabSelectedTextColor="@color/Blue" />
 
     </android.support.design.widget.CoordinatorLayout>

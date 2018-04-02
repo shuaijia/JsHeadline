@@ -32,7 +32,6 @@ public class NewsFragment extends BaseFragment {
     @Override
     protected View initFragmentView(LayoutInflater inflater) {
         view = inflater.inflate(R.layout.frag_news, null);
-        Log.e(TAG, "initFragmentView: ");
         return view;
     }
 
@@ -40,12 +39,10 @@ public class NewsFragment extends BaseFragment {
     protected void initFragmentChildView(View view) {
         mTabLayout = view.findViewById(R.id.tl_news_titles);
         mViewPager = view.findViewById(R.id.vp_news_content);
-        Log.e(TAG, "initFragmentChildView: ");
     }
 
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
-        Log.e(TAG, "initFragmentData: ");
         mTitles.add("推荐");
         mTitles.add("热点");
         mTitles.add("视频");
