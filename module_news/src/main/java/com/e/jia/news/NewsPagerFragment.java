@@ -47,7 +47,7 @@ public class NewsPagerFragment extends BaseFragment {
                 }, 500);
             }
         });
-//        recycler_view=view.findViewById(R.id.recycler_view);
+        recycler_view=view.findViewById(R.id.recycler_view);
     }
 
     @Override
