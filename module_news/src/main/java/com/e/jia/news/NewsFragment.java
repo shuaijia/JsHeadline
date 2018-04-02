@@ -25,7 +25,6 @@ public class NewsFragment extends BaseFragment {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private Toolbar mToolbar;
 
     private NewsFragmentPagerAdapter mNewsFragmentPagerAdapter;
     private List<String> mTitles = new ArrayList<>();
@@ -41,7 +40,6 @@ public class NewsFragment extends BaseFragment {
     protected void initFragmentChildView(View view) {
         mTabLayout = view.findViewById(R.id.tl_news_titles);
         mViewPager = view.findViewById(R.id.vp_news_content);
-        mToolbar = view.findViewById(R.id.tool_bar);
         Log.e(TAG, "initFragmentChildView: ");
     }
 
@@ -66,18 +64,6 @@ public class NewsFragment extends BaseFragment {
         mViewPager.setAdapter(mNewsFragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(50);
         mTabLayout.setupWithViewPager(mViewPager);
-
-        //设置导航的图标
-        mToolbar.setNavigationIcon(R.drawable.ic_menu);
-        // 设置主标题
-        mToolbar.setTitle("新闻");
-
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(mToolbar,"点击",Snackbar.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override

@@ -1,12 +1,19 @@
 package com.mangosteen.headline;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.e.jia.news.NewsFragment;
 import com.e.jia.picture.PictureFragment;
@@ -26,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @BindEventBus
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private static final int TAB_NEWS = 0;
     private static final int TAB_PICTURE = 1;
@@ -36,7 +43,13 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.tab_bottom)
     TabLayout mTabLayout;
 
-    private List<String> titles = new ArrayList<>();
+    @BindView(R.id.toolbar)
+    android.support.v7.widget.Toolbar toolbar;
+
+    @BindView(R.id.drawer)
+    DrawerLayout drawer;
+
+    private String[] titles = {"新闻", "图片", "视频", "头条号"};
     private Fragment mNewsFragment;
     private Fragment mPictureFragment;
     private Fragment mVideoFragment;
@@ -50,16 +63,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        titles.add("新闻");
-        titles.add("图片");
-        titles.add("视频");
-        titles.add("头条号");
-        for (String title : titles) {
-            TabLayout.Tab tab = mTabLayout.newTab(); //创建tab
-            tab.setText(title); //设置文字
-            tab.setIcon(R.mipmap.ic_launcher); //设置图片
-            mTabLayout.addTab(tab); //添加到tabLayout中
-        }
+        initTabLayout();
+
+        initToolBar();
 
         //状态变化时删除老的Fragment
         FragmentManager fm = getSupportFragmentManager();
@@ -72,21 +78,36 @@ public class MainActivity extends BaseActivity {
         }
 
         select(TAB_NEWS);
+    }
 
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+    /**
+     * 初始化 选项卡
+     */
+    private void initTabLayout() {
+        for (String title : titles) {
+            TabLayout.Tab tab = mTabLayout.newTab(); //创建tab
+            tab.setText(title); //设置文字
+            tab.setIcon(R.mipmap.ic_launcher); //设置图片
+            mTabLayout.addTab(tab); //添加到tabLayout中
+        }
+
+        mTabLayout.addOnTabSelectedListener(this);
+    }
+
+    /**
+     * 初始化toolbar
+     */
+    private void initToolBar() {
+        setSupportActionBar(toolbar);
+        //设置导航的图标
+        toolbar.setNavigationIcon(com.e.jia.news.R.drawable.ic_menu);
+        // 设置主标题
+        toolbar.setTitle("新闻");
+        // 左侧图标点击
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                select(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                drawer.openDrawer(Gravity.LEFT);
             }
         });
     }
@@ -99,6 +120,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        return true;
     }
 
     @Subscribe
@@ -120,6 +147,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mNewsFragment);
                 }
+                toolbar.setTitle("新闻");
                 break;
             case TAB_PICTURE:
                 if (mPictureFragment == null) {
@@ -128,6 +156,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mPictureFragment);
                 }
+                toolbar.setTitle("图片");
                 break;
             case TAB_VIDEO:
                 if (mVideoFragment == null) {
@@ -136,6 +165,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mVideoFragment);
                 }
+                toolbar.setTitle("视频");
                 break;
             case TAB_HEADLINE:
                 if (mHeadlineFragment == null) {
@@ -144,6 +174,7 @@ public class MainActivity extends BaseActivity {
                 } else {
                     transaction.show(mHeadlineFragment);
                 }
+                toolbar.setTitle("头条号");
                 break;
         }
         transaction.commit();
@@ -154,5 +185,35 @@ public class MainActivity extends BaseActivity {
         if (mPictureFragment != null) transaction.hide(mPictureFragment);
         if (mVideoFragment != null) transaction.hide(mVideoFragment);
         if (mHeadlineFragment != null) transaction.hide(mHeadlineFragment);
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        select(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Snackbar.make(toolbar, "搜索", Snackbar.LENGTH_LONG).show();
+                break;
+        }
+        return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

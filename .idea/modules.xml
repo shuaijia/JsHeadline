@@ -9,8 +9,11 @@
       <module fileurl="file://$PROJECT_DIR$/lib_ui/lib_ui.iml" filepath="$PROJECT_DIR$/lib_ui/lib_ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_news/module_news.iml" filepath="$PROJECT_DIR$/module_news/module_news.iml" />
+      <module fileurl="file://F:\HeadLine\Headline\module_news\module_news.iml" filepath="F:\HeadLine\Headline\module_news\module_news.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_picture/module_picture.iml" filepath="$PROJECT_DIR$/module_picture/module_picture.iml" />
+      <module fileurl="file://F:\HeadLine\Headline\module_picture\module_picture.iml" filepath="F:\HeadLine\Headline\module_picture\module_picture.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_video/module_video.iml" filepath="$PROJECT_DIR$/module_video/module_video.iml" />
+      <module fileurl="file://F:\HeadLine\Headline\module_video\module_video.iml" filepath="F:\HeadLine\Headline\module_video\module_video.iml" />
     </modules>
   </component>
 </project>
