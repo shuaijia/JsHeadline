@@ -45,7 +45,7 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
         tv_extra.setText(extra);
 
         Glide.with(itemView.getContext())
-                .load(data.getMiddle_image().getUrl_list().get(0))
+                .load(data.getItem_source_url())
                 .into(iv_image);
     }
 

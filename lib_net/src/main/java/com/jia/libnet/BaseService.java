@@ -15,5 +15,5 @@ import rx.Observable;
 public interface BaseService {
 
     @POST("api/article/recent/")
-    Observable<NewsBean> getNewsByTag(@Query("source") String source, @Query("category") String category, @Query("as") String as);
+    Observable<NewsBean> getNewsByTag(@Query("source") String source,@Query("count") String count, @Query("category") String category, @Query("as") String as);
 }

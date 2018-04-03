@@ -1,5 +1,7 @@
 package com.jia.libnet;
 
+import android.util.Log;
+
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
 
@@ -11,13 +13,12 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Description:
@@ -35,8 +36,18 @@ public class HttpMethod {
 
     private BaseService service;
 
+    private HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+        @Override
+        public void log(String message) {
+            //打印retrofit日志
+            Log.i("RetrofitLog","retrofitBack = "+message);
+        }
+    });
+
+
     // 私有构造
     public HttpMethod() {
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         // 手动创建okhttpclient，并设置超时，添加和保存cookie
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -102,6 +113,8 @@ public class HttpMethod {
             }
         });
 
+        buidler.addInterceptor(loggingInterceptor);
+
         retrofit = new Retrofit.Builder()
                 .client(buidler.build())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -152,10 +165,10 @@ public class HttpMethod {
     }
 
     public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber){
-        service.getNewsByTag("2", category,as)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+//        service.getNewsByTag("2", category,as)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(subscriber);
 
     }
 }

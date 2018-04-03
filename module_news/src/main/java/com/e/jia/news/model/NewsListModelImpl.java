@@ -27,7 +27,7 @@ public class NewsListModelImpl implements NewsListContract.NewsListModel {
     @Override
     public void getNewsByTag(String tag, final NewsListContract.OnNewsListCallback callback) {
         HttpMethod.getInstance().getService()
-                .getNewsByTag("2", tag, ToutiaoUtil.getAsCp().get("as"))
+                .getNewsByTag("2","10", tag, ToutiaoUtil.getAsCp().get("as"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<NewsBean>() {

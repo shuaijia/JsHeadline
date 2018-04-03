@@ -16,8 +16,8 @@ public class NewsBean  {
     /**
      * has_more : true
      * message : success
-     * data : [{"media_name":"侠客岛","abstract":"今天又有大新闻啦。据美国多家媒体的消息， 12月15日，中国海军在南海趁美国一艘无人水下潜航器（UUV）故障之机，抢在美军打捞人员之前将其捞走。","impression_count":7433280,"image_list":[{"url":"http://p1.pstatp.com/list/134b00048dd993d77429"},{"url":"http://p3.pstatp.com/list/1349000017bb1b3c7366"},{"url":"http://p3.pstatp.com/list/134c0003788b24d74346"}],"media_avatar_url":"http://p3.pstatp.com/large/1731/4112623237","external_visit_count":14999,"article_type":0,"more_mode":true,"tag":"news_military","is_favorite":0,"has_m3u8_video":0,"keywords":"南海诸岛,南海,美国,专属经济区,公约,国际法","has_mp4_video":0,"favorite_count":1059,"display_url":"http://toutiao.com/group/6365056560833659137/","article_sub_type":0,"bury_count":9,"title":"美国想在南海下黑手，结果被中国抓个正着！这下送礼了","datetime":"2016-12-17 22:27","has_video":false,"share_url":"http://toutiao.com/group/6365056560833659137/?iid=41507200127&app=news_article","id":6365056560833659000,"source":"侠客岛","comment_count":17,"article_url":"http://toutiao.com/group/6365056560833659137/","create_time":1481980801,"recommend":0,"tips":0,"aggr_type":1,"item_source_url":"/item/6365059050404577794/","media_url":"http://toutiao.com/m3741758306/","display_time":1481980795,"publish_time":1481980795,"go_detail_count":504591,"group_flags":2,"middle_mode":false,"display_title":" ","gallary_image_count":3,"item_seo_url":"/item/6365059050404577794/","tag_id":6365056560833659000,"source_url":"/group/6365056560833659137/","article_genre":"article","large_mode":false,"item_id":6365059050404578000,"natant_level":0,"is_digg":0,"seo_url":"/group/6365056560833659137/","repin_count":1059,"url":"http://toutiao.com/group/6365056560833659137/","level":0,"digg_count":55,"behot_time":1481984828,"hot":0,"preload_web":2,"comments_count":17,"has_image":true,"is_bury":0,"group_id":6365056560833659000,"middle_image":{"url":"http://p1.pstatp.com/list/134b00048dd993d77429","width":415,"url_list":[{"url":"http://p1.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"}],"uri":"list/134b00048dd993d77429","height":536}}]
-     * next : {"max_behot_time":1481984828}
+     * data : [{"media_name":"新华网","abstract":"中国国家主席习近平将应邀出席博鳌亚洲论坛2018年年会开幕式并发表重要主旨演讲，会见与会外国国家元首、政府首脑和国际组织负责人。","impression_count":0,"image_list":[],"media_avatar_url":"http://p1.pstatp.com/large/dcc0005c79a11921544","external_visit_count":0,"article_type":0,"more_mode":false,"tag":"","is_favorite":0,"has_m3u8_video":0,"keywords":"国家元首,古特雷斯,联合国秘书长,国务委员,奥地利总统","has_mp4_video":0,"favorite_count":0,"display_url":"http://toutiao.com/group/6540037168423764493/","article_sub_type":0,"bury_count":0,"title":"习近平将出席博鳌亚洲论坛2018年年会开幕式","datetime":"2018-04-03 20:18","aggr_type":0,"has_video":false,"share_url":"http://toutiao.com/group/6540037168423764493/?iid=75274805517&app=news_article","id":6540037168423764493,"source":"新华网","comment_count":0,"article_url":"http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm","create_time":1522721063,"recommend":0,"tips":0,"is_digg":0,"item_source_url":"/group/6540037168423764493/","media_url":"http://toutiao.com/m4377795668/","display_time":1522720897,"publish_time":1522720897,"go_detail_count":0,"group_flags":0,"middle_mode":false,"display_title":" ","gallary_image_count":0,"item_seo_url":"/i6540037168423764493/","tag_id":6540037168423764493,"source_url":"/group/6540037168423764493/","article_genre":"article","item_id":0,"natant_level":0,"large_mode":false,"seo_url":"/i6540037168423764493/","repin_count":0,"url":"http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm","level":0,"digg_count":0,"behot_time":1522757933,"hot":0,"preload_web":2,"comments_count":0,"has_image":false,"is_bury":0,"group_id":6540037168423764493}]
+     * next : {"max_behot_time":1522757933}
      */
 
     private boolean has_more;
@@ -59,7 +59,7 @@ public class NewsBean  {
 
     public static class NextEntity {
         /**
-         * max_behot_time : 1481984828
+         * max_behot_time : 1522757933
          */
 
         private int max_behot_time;
@@ -75,65 +75,64 @@ public class NewsBean  {
 
     public static class DataEntity {
         /**
-         * media_name : 侠客岛
-         * abstract : 今天又有大新闻啦。据美国多家媒体的消息， 12月15日，中国海军在南海趁美国一艘无人水下潜航器（UUV）故障之机，抢在美军打捞人员之前将其捞走。
-         * impression_count : 7433280
-         * image_list : [{"url":"http://p1.pstatp.com/list/134b00048dd993d77429"},{"url":"http://p3.pstatp.com/list/1349000017bb1b3c7366"},{"url":"http://p3.pstatp.com/list/134c0003788b24d74346"}]
-         * media_avatar_url : http://p3.pstatp.com/large/1731/4112623237
-         * external_visit_count : 14999
+         * media_name : 新华网
+         * abstract : 中国国家主席习近平将应邀出席博鳌亚洲论坛2018年年会开幕式并发表重要主旨演讲，会见与会外国国家元首、政府首脑和国际组织负责人。
+         * impression_count : 0
+         * image_list : []
+         * media_avatar_url : http://p1.pstatp.com/large/dcc0005c79a11921544
+         * external_visit_count : 0
          * article_type : 0
-         * more_mode : true
-         * tag : news_military
+         * more_mode : false
+         * tag :
          * is_favorite : 0
          * has_m3u8_video : 0
-         * keywords : 南海诸岛,南海,美国,专属经济区,公约,国际法
+         * keywords : 国家元首,古特雷斯,联合国秘书长,国务委员,奥地利总统
          * has_mp4_video : 0
-         * favorite_count : 1059
-         * display_url : http://toutiao.com/group/6365056560833659137/
+         * favorite_count : 0
+         * display_url : http://toutiao.com/group/6540037168423764493/
          * article_sub_type : 0
-         * bury_count : 9
-         * title : 美国想在南海下黑手，结果被中国抓个正着！这下送礼了
-         * datetime : 2016-12-17 22:27
+         * bury_count : 0
+         * title : 习近平将出席博鳌亚洲论坛2018年年会开幕式
+         * datetime : 2018-04-03 20:18
+         * aggr_type : 0
          * has_video : false
-         * share_url : http://toutiao.com/group/6365056560833659137/?iid=41507200127&app=news_article
-         * id : 6365056560833659000
-         * source : 侠客岛
-         * comment_count : 17
-         * article_url : http://toutiao.com/group/6365056560833659137/
-         * create_time : 1481980801
+         * share_url : http://toutiao.com/group/6540037168423764493/?iid=75274805517&app=news_article
+         * id : 6540037168423764493
+         * source : 新华网
+         * comment_count : 0
+         * article_url : http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm
+         * create_time : 1522721063
          * recommend : 0
          * tips : 0
-         * aggr_type : 1
-         * item_source_url : /item/6365059050404577794/
-         * media_url : http://toutiao.com/m3741758306/
-         * display_time : 1481980795
-         * publish_time : 1481980795
-         * go_detail_count : 504591
-         * group_flags : 2
+         * is_digg : 0
+         * item_source_url : /group/6540037168423764493/
+         * media_url : http://toutiao.com/m4377795668/
+         * display_time : 1522720897
+         * publish_time : 1522720897
+         * go_detail_count : 0
+         * group_flags : 0
          * middle_mode : false
          * display_title :
-         * gallary_image_count : 3
-         * item_seo_url : /item/6365059050404577794/
-         * tag_id : 6365056560833659000
-         * source_url : /group/6365056560833659137/
+         * gallary_image_count : 0
+         * item_seo_url : /i6540037168423764493/
+         * tag_id : 6540037168423764493
+         * source_url : /group/6540037168423764493/
          * article_genre : article
-         * large_mode : false
-         * item_id : 6365059050404578000
+         * item_id : 0
          * natant_level : 0
-         * is_digg : 0
-         * seo_url : /group/6365056560833659137/
-         * repin_count : 1059
-         * url : http://toutiao.com/group/6365056560833659137/
+         * large_mode : false
+         * seo_url : /i6540037168423764493/
+         * repin_count : 0
+         * url : http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm
          * level : 0
-         * digg_count : 55
-         * behot_time : 1481984828
+         * digg_count : 0
+         * behot_time : 1522757933
          * hot : 0
          * preload_web : 2
-         * comments_count : 17
-         * has_image : true
+         * comments_count : 0
+         * has_image : false
          * is_bury : 0
-         * group_id : 6365056560833659000
-         * middle_image : {"url":"http://p1.pstatp.com/list/134b00048dd993d77429","width":415,"url_list":[{"url":"http://p1.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"}],"uri":"list/134b00048dd993d77429","height":536}
+         * group_id : 6540037168423764493
          */
 
         private String media_name;
@@ -155,6 +154,7 @@ public class NewsBean  {
         private int bury_count;
         private String title;
         private String datetime;
+        private int aggr_type;
         private boolean has_video;
         private String share_url;
         private long id;
@@ -164,7 +164,7 @@ public class NewsBean  {
         private int create_time;
         private int recommend;
         private int tips;
-        private int aggr_type;
+        private int is_digg;
         private String item_source_url;
         private String media_url;
         private int display_time;
@@ -178,10 +178,9 @@ public class NewsBean  {
         private long tag_id;
         private String source_url;
         private String article_genre;
-        private boolean large_mode;
         private long item_id;
         private int natant_level;
-        private int is_digg;
+        private boolean large_mode;
         private String seo_url;
         private int repin_count;
         private String url;
@@ -194,8 +193,7 @@ public class NewsBean  {
         private boolean has_image;
         private int is_bury;
         private long group_id;
-        private MiddleImageEntity middle_image;
-        private List<ImageListEntity> image_list;
+        private List<?> image_list;
 
         public String getMedia_name() {
             return media_name;
@@ -341,6 +339,14 @@ public class NewsBean  {
             this.datetime = datetime;
         }
 
+        public int getAggr_type() {
+            return aggr_type;
+        }
+
+        public void setAggr_type(int aggr_type) {
+            this.aggr_type = aggr_type;
+        }
+
         public boolean isHas_video() {
             return has_video;
         }
@@ -413,12 +419,12 @@ public class NewsBean  {
             this.tips = tips;
         }
 
-        public int getAggr_type() {
-            return aggr_type;
+        public int getIs_digg() {
+            return is_digg;
         }
 
-        public void setAggr_type(int aggr_type) {
-            this.aggr_type = aggr_type;
+        public void setIs_digg(int is_digg) {
+            this.is_digg = is_digg;
         }
 
         public String getItem_source_url() {
@@ -525,19 +531,11 @@ public class NewsBean  {
             this.article_genre = article_genre;
         }
 
-        public boolean isLarge_mode() {
-            return large_mode;
-        }
-
-        public void setLarge_mode(boolean large_mode) {
-            this.large_mode = large_mode;
-        }
-
         public long getItem_id() {
             return item_id;
         }
 
-        public void setItem_id(long item_id) {
+        public void setItem_id(int item_id) {
             this.item_id = item_id;
         }
 
@@ -549,12 +547,12 @@ public class NewsBean  {
             this.natant_level = natant_level;
         }
 
-        public int getIs_digg() {
-            return is_digg;
+        public boolean isLarge_mode() {
+            return large_mode;
         }
 
-        public void setIs_digg(int is_digg) {
-            this.is_digg = is_digg;
+        public void setLarge_mode(boolean large_mode) {
+            this.large_mode = large_mode;
         }
 
         public String getSeo_url() {
@@ -653,184 +651,12 @@ public class NewsBean  {
             this.group_id = group_id;
         }
 
-        public MiddleImageEntity getMiddle_image() {
-            return middle_image;
-        }
-
-        public void setMiddle_image(MiddleImageEntity middle_image) {
-            this.middle_image = middle_image;
-        }
-
-        public List<ImageListEntity> getImage_list() {
+        public List<?> getImage_list() {
             return image_list;
         }
 
-        public void setImage_list(List<ImageListEntity> image_list) {
+        public void setImage_list(List<?> image_list) {
             this.image_list = image_list;
         }
-
-        public static class MiddleImageEntity {
-            /**
-             * url : http://p1.pstatp.com/list/134b00048dd993d77429
-             * width : 415
-             * url_list : [{"url":"http://p1.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"},{"url":"http://pb3.pstatp.com/list/134b00048dd993d77429"}]
-             * uri : list/134b00048dd993d77429
-             * height : 536
-             */
-
-            private String url;
-            private int width;
-            private String uri;
-            private int height;
-            private List<UrlListEntity> url_list;
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-            public int getWidth() {
-                return width;
-            }
-
-            public void setWidth(int width) {
-                this.width = width;
-            }
-
-            public String getUri() {
-                return uri;
-            }
-
-            public void setUri(String uri) {
-                this.uri = uri;
-            }
-
-            public int getHeight() {
-                return height;
-            }
-
-            public void setHeight(int height) {
-                this.height = height;
-            }
-
-            public List<UrlListEntity> getUrl_list() {
-                return url_list;
-            }
-
-            public void setUrl_list(List<UrlListEntity> url_list) {
-                this.url_list = url_list;
-            }
-
-            public static class UrlListEntity {
-                /**
-                 * url : http://p1.pstatp.com/list/134b00048dd993d77429
-                 */
-
-                private String url;
-
-                public String getUrl() {
-                    return url;
-                }
-
-                public void setUrl(String url) {
-                    this.url = url;
-                }
-            }
-        }
-
-        public static class ImageListEntity {
-            /**
-             * url : http://p1.pstatp.com/list/134b00048dd993d77429
-             */
-
-            private String url;
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-        }
-
-        @Override
-        public String toString() {
-            return "DataEntity{" +
-                    "media_name='" + media_name + '\'' +
-                    ", abstractX='" + abstractX + '\'' +
-                    ", impression_count=" + impression_count +
-                    ", media_avatar_url='" + media_avatar_url + '\'' +
-                    ", external_visit_count=" + external_visit_count +
-                    ", article_type=" + article_type +
-                    ", more_mode=" + more_mode +
-                    ", tag='" + tag + '\'' +
-                    ", is_favorite=" + is_favorite +
-                    ", has_m3u8_video=" + has_m3u8_video +
-                    ", keywords='" + keywords + '\'' +
-                    ", has_mp4_video=" + has_mp4_video +
-                    ", favorite_count=" + favorite_count +
-                    ", display_url='" + display_url + '\'' +
-                    ", article_sub_type=" + article_sub_type +
-                    ", bury_count=" + bury_count +
-                    ", title='" + title + '\'' +
-                    ", datetime='" + datetime + '\'' +
-                    ", has_video=" + has_video +
-                    ", share_url='" + share_url + '\'' +
-                    ", id=" + id +
-                    ", source='" + source + '\'' +
-                    ", comment_count=" + comment_count +
-                    ", article_url='" + article_url + '\'' +
-                    ", create_time=" + create_time +
-                    ", recommend=" + recommend +
-                    ", tips=" + tips +
-                    ", aggr_type=" + aggr_type +
-                    ", item_source_url='" + item_source_url + '\'' +
-                    ", media_url='" + media_url + '\'' +
-                    ", display_time=" + display_time +
-                    ", publish_time=" + publish_time +
-                    ", go_detail_count=" + go_detail_count +
-                    ", group_flags=" + group_flags +
-                    ", middle_mode=" + middle_mode +
-                    ", display_title='" + display_title + '\'' +
-                    ", gallary_image_count=" + gallary_image_count +
-                    ", item_seo_url='" + item_seo_url + '\'' +
-                    ", tag_id=" + tag_id +
-                    ", source_url='" + source_url + '\'' +
-                    ", article_genre='" + article_genre + '\'' +
-                    ", large_mode=" + large_mode +
-                    ", item_id=" + item_id +
-                    ", natant_level=" + natant_level +
-                    ", is_digg=" + is_digg +
-                    ", seo_url='" + seo_url + '\'' +
-                    ", repin_count=" + repin_count +
-                    ", url='" + url + '\'' +
-                    ", level=" + level +
-                    ", digg_count=" + digg_count +
-                    ", behot_time=" + behot_time +
-                    ", hot=" + hot +
-                    ", preload_web=" + preload_web +
-                    ", comments_count=" + comments_count +
-                    ", has_image=" + has_image +
-                    ", is_bury=" + is_bury +
-                    ", group_id=" + group_id +
-                    ", middle_image=" + middle_image +
-                    ", image_list=" + image_list +
-                    '}';
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "NewsBean{" +
-                "has_more=" + has_more +
-                ", message='" + message + '\'' +
-                ", next=" + next +
-                ", data=" + data +
-                '}';
     }
 }
