@@ -26,11 +26,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
 
     private List<NewsBean.DataEntity> list;
 
-    private NewsListAdapter(Context context) {
+    public NewsListAdapter(Context context) {
         this.context = context;
     }
 
-    private void setData(List<NewsBean.DataEntity> list) {
+    public void setData(List<NewsBean.DataEntity> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -71,6 +71,14 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+        int type;
+        if (list.get(position).getArticle_type() == TYPE_VIDEO) {
+            type = TYPE_TEXT;
+        } else if (list.get(position).getArticle_type() == TYPE_IMG) {
+            type = TYPE_IMG;
+        } else {
+            type = TYPE_TEXT;
+        }
+        return type;
     }
 }

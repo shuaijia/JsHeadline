@@ -24,12 +24,6 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.meiji.toutiao.widget.CircleImageView
-                android:id="@+id/iv_media"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:scaleType="centerCrop"/>
-
             <TextView
                 android:id="@+id/tv_extra"
                 android:layout_width="wrap_content"
