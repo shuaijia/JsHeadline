@@ -121,6 +121,10 @@ public class HttpMethod {
         return retrofit;
     }
 
+    public BaseService getService() {
+        return service;
+    }
+
     //在访问HttpMethods时创建单例
     private static class SingletonHolder {
         private static final HttpMethod INSTANCE = new HttpMethod();

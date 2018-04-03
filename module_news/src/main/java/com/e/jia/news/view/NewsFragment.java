@@ -1,16 +1,15 @@
-package com.e.jia.news;
+package com.e.jia.news.view;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
+import com.e.jia.news.adapter.NewsFragmentPagerAdapter;
+import com.e.jia.news.R;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
 

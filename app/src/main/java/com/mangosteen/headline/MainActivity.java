@@ -6,28 +6,21 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.e.jia.news.NewsFragment;
+import com.e.jia.news.view.NewsFragment;
 import com.e.jia.picture.PictureFragment;
 import com.e.jia.video.VideoFragment;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
-import com.mangosteen.headline.adapter.MainFragmentPagerAdapter;
 
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

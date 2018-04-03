@@ -1,9 +1,12 @@
-package com.e.jia.news;
+package com.e.jia.news.adapter;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+
+import com.e.jia.news.view.NewsListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ public class NewsFragmentPagerAdapter extends FragmentPagerAdapter {
         if (position < mFragments.size()) {
             return mFragments.get(position);
         } else {
-            NewsPagerFragment fragment = new NewsPagerFragment();
+            NewsListFragment fragment = new NewsListFragment();
 
             switch (position){
                 case 0:

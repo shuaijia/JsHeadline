@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.e.jia.news.NewsFragment;
+import com.e.jia.news.view.NewsFragment;
 import com.e.jia.picture.PictureFragment;
 import com.e.jia.video.VideoFragment;
 

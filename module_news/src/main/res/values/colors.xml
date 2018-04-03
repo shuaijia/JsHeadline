@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="viewBackground">@android:color/white</color>
+    <color name="White">@android:color/white</color>
+    <color name="colorAccent_night">#212a2f</color>
+    <color name="textColorPrimary_night">#616161</color>
+    <color name="viewBackground_night">#212a2f</color>
+    <color name="textColorPrimary">#616161</color>
+
+</resources>
