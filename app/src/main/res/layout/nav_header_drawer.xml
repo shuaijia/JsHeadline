@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/iv_bg"
+    <com.ocnyang.contourview.ContourView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:background="@drawable/shape_drawer_header_bg"
+        app:contour_style="Sand"
+        app:shader_endcolor="@color/endcolor"
+        app:shader_mode="RadialGradient"
+        app:shader_startcolor="@color/startcolor"
+        app:shader_style="Center"
+        app:smoothness="0.2" />
 
-    <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:src="@mipmap/ic_launcher" />
-
-
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_icon"
-        android:layout_marginLeft="30dp"
-        android:textColor="#fff000"
-        android:text="点击头像登录" />
 </RelativeLayout>

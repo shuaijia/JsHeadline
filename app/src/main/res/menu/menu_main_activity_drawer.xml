@@ -4,24 +4,24 @@
         <menu>
             <item
                 android:id="@+id/nav_manage"
-                android:icon="@mipmap/ic_launcher"
+                android:icon="@drawable/ic_about_me"
                 android:title="个人" />
         </menu>
     </item>
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_theme"
             android:title="切换主题" />
 
         <item
             android:id="@+id/nav_share"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_setting"
             android:title="设置" />
 
         <item
             android:id="@+id/nav_send"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_share"
             android:title="分享" />
     </group>
 

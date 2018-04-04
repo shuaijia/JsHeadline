@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.e.jia.news.R;
@@ -26,6 +27,7 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
 
     private SwipeRefreshLayout refresh_layout;
     private RecyclerView recycler_view;
+    private TextView tv_no_data;
     private NewsListAdapter adapter;
 
     private String tag = "";
@@ -41,6 +43,7 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         refresh_layout = view.findViewById(R.id.refresh_layout);
         refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         recycler_view = view.findViewById(R.id.recycler_view);
+        tv_no_data=view.findViewById(R.id.tv_no_data);
         adapter=new NewsListAdapter(getActivity());
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
@@ -53,6 +56,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         });
         refresh_layout.setRefreshing(true);
         mPresenter.getNewsListByTag(tag);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("加载中...");
     }
 
     @Override
@@ -75,6 +80,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         refresh_layout.setRefreshing(false);
 
         adapter.setData(bean.getData());
+
+        tv_no_data.setVisibility(View.GONE);
     }
 
     @Override
@@ -82,5 +89,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         refresh_layout.setRefreshing(false);
 
         Toast.makeText(getContext(),""+info,Toast.LENGTH_LONG).show();
+
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("暂无数据");
     }
 }

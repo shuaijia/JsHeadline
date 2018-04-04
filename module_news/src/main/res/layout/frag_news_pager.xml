@@ -20,6 +20,14 @@
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"/>
 
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:visibility="visible"/>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

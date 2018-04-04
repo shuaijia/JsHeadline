@@ -46,4 +46,6 @@ dependencies {
     compile 'me.relex:circleindicator:1.2.2@aar'
     //质感设计
     compile 'com.android.support:design:26.0.0-alpha1'
+    // 通过贝塞尔曲线绘制出的魔炫背景N
+    compile 'com.ocnyang:contourview:1.0.0'
 }

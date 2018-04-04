@@ -47,18 +47,13 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
     public void bindView(NewsBean.DataEntity data) {
         tv_title.setText(data.getTitle() + "");
         tv_abstract.setText(data.getAbstractX() + "");
-        StringBuffer extra = new StringBuffer();
-        extra.append(data.getMedia_name() + " ");
-        extra.append(data.getComments_count() + " ");
-        extra.append(stampToDate(data.getPublish_time() + ""));
-        tv_extra.setText(extra);
-
-        Log.e("jia", "bindView: "+ data.getImage_list().get(0).getUrl()+"");
 
         Glide.with(itemView.getContext())
                 .load(data.getImage_list().get(0).getUrl()+"")
                 .into(iv_image);
 
+        StringBuffer extra = new StringBuffer();
+        extra.append(data.getMedia_name() + " ");
         if (data.getComments_count() == 0) {
             extra.append("暂无评论 ");
         } else {
