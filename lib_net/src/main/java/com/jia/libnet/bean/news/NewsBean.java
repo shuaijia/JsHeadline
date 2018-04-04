@@ -16,8 +16,8 @@ public class NewsBean  {
     /**
      * has_more : true
      * message : success
-     * data : [{"media_name":"新华网","abstract":"中国国家主席习近平将应邀出席博鳌亚洲论坛2018年年会开幕式并发表重要主旨演讲，会见与会外国国家元首、政府首脑和国际组织负责人。","impression_count":0,"image_list":[],"media_avatar_url":"http://p1.pstatp.com/large/dcc0005c79a11921544","external_visit_count":0,"article_type":0,"more_mode":false,"tag":"","is_favorite":0,"has_m3u8_video":0,"keywords":"国家元首,古特雷斯,联合国秘书长,国务委员,奥地利总统","has_mp4_video":0,"favorite_count":0,"display_url":"http://toutiao.com/group/6540037168423764493/","article_sub_type":0,"bury_count":0,"title":"习近平将出席博鳌亚洲论坛2018年年会开幕式","datetime":"2018-04-03 20:18","aggr_type":0,"has_video":false,"share_url":"http://toutiao.com/group/6540037168423764493/?iid=75274805517&app=news_article","id":6540037168423764493,"source":"新华网","comment_count":0,"article_url":"http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm","create_time":1522721063,"recommend":0,"tips":0,"is_digg":0,"item_source_url":"/group/6540037168423764493/","media_url":"http://toutiao.com/m4377795668/","display_time":1522720897,"publish_time":1522720897,"go_detail_count":0,"group_flags":0,"middle_mode":false,"display_title":" ","gallary_image_count":0,"item_seo_url":"/i6540037168423764493/","tag_id":6540037168423764493,"source_url":"/group/6540037168423764493/","article_genre":"article","item_id":0,"natant_level":0,"large_mode":false,"seo_url":"/i6540037168423764493/","repin_count":0,"url":"http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm","level":0,"digg_count":0,"behot_time":1522757933,"hot":0,"preload_web":2,"comments_count":0,"has_image":false,"is_bury":0,"group_id":6540037168423764493}]
-     * next : {"max_behot_time":1522757933}
+     * data : [{"media_name":"北青网","abstract":"4月3日，孙俪荣获第31届电视剧飞天奖优秀女演员奖。获奖感言中，她说：\u201c为照顾孩子四五年就拍了两个戏，现在孩子大了，有好的剧本快砸向我\u201d。","impression_count":0,"image_list":[{"url":"http://p1.pstatp.com/list/7577000d417d35780139"},{"url":"http://p1.pstatp.com/list/7576000dc8306a2238ac"},{"url":"http://p3.pstatp.com/list/7578000c65ea532b6aad"}],"media_avatar_url":"http://p3.pstatp.com/large/ef600112027c38b89ca","external_visit_count":0,"article_type":0,"more_mode":true,"tag":"news_entertainment","is_favorite":0,"has_m3u8_video":0,"keywords":"女演员,孙俪,飞天奖,获奖感言,邓超","has_mp4_video":0,"favorite_count":0,"display_url":"http://toutiao.com/group/6540368356539630093/","article_sub_type":0,"bury_count":0,"title":"孙俪获飞天奖优秀女演员邓超傲娇自夸：身后一定有一位伟大的男人","datetime":"2018-04-04 10:31","has_video":false,"share_url":"http://toutiao.com/group/6540368356539630093/?iid=75274786357&app=news_article","id":6540368356539630093,"source":"北青网","comment_count":0,"article_url":"http://h5.ent.ynet.com/2018/04/04/1081488t1263.html","create_time":1522798174,"recommend":0,"tips":0,"aggr_type":1,"item_source_url":"/item/6540368356539630093/","media_url":"http://toutiao.com/m52255723016/","display_time":1522809026,"publish_time":1522809026,"go_detail_count":0,"group_flags":2,"middle_mode":false,"display_title":" ","gallary_image_count":5,"item_seo_url":"/i6540368356539630093/","tag_id":6540368356539630093,"source_url":"/group/6540368356539630093/","article_genre":"article","large_mode":false,"item_id":6540368356539630093,"natant_level":0,"is_digg":0,"seo_url":"/i6540368356539630093/","repin_count":0,"url":"http://h5.ent.ynet.com/2018/04/04/1081488t1263.html","level":0,"digg_count":0,"behot_time":1522809087,"hot":0,"preload_web":2,"comments_count":0,"has_image":true,"is_bury":0,"group_id":6540368356539630093,"middle_image":{"url":"http://p1.pstatp.com/list/7577000d417d35780139","width":281,"url_list":[{"url":"http://p1.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb3.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb9.pstatp.com/list/7577000d417d35780139"}],"uri":"list/7577000d417d35780139","height":500}}]
+     * next : {"max_behot_time":1522809087}
      */
 
     private boolean has_more;
@@ -59,7 +59,7 @@ public class NewsBean  {
 
     public static class NextEntity {
         /**
-         * max_behot_time : 1522757933
+         * max_behot_time : 1522809087
          */
 
         private int max_behot_time;
@@ -75,64 +75,65 @@ public class NewsBean  {
 
     public static class DataEntity {
         /**
-         * media_name : 新华网
-         * abstract : 中国国家主席习近平将应邀出席博鳌亚洲论坛2018年年会开幕式并发表重要主旨演讲，会见与会外国国家元首、政府首脑和国际组织负责人。
+         * media_name : 北青网
+         * abstract : 4月3日，孙俪荣获第31届电视剧飞天奖优秀女演员奖。获奖感言中，她说：“为照顾孩子四五年就拍了两个戏，现在孩子大了，有好的剧本快砸向我”。
          * impression_count : 0
-         * image_list : []
-         * media_avatar_url : http://p1.pstatp.com/large/dcc0005c79a11921544
+         * image_list : [{"url":"http://p1.pstatp.com/list/7577000d417d35780139"},{"url":"http://p1.pstatp.com/list/7576000dc8306a2238ac"},{"url":"http://p3.pstatp.com/list/7578000c65ea532b6aad"}]
+         * media_avatar_url : http://p3.pstatp.com/large/ef600112027c38b89ca
          * external_visit_count : 0
          * article_type : 0
-         * more_mode : false
-         * tag :
+         * more_mode : true
+         * tag : news_entertainment
          * is_favorite : 0
          * has_m3u8_video : 0
-         * keywords : 国家元首,古特雷斯,联合国秘书长,国务委员,奥地利总统
+         * keywords : 女演员,孙俪,飞天奖,获奖感言,邓超
          * has_mp4_video : 0
          * favorite_count : 0
-         * display_url : http://toutiao.com/group/6540037168423764493/
+         * display_url : http://toutiao.com/group/6540368356539630093/
          * article_sub_type : 0
          * bury_count : 0
-         * title : 习近平将出席博鳌亚洲论坛2018年年会开幕式
-         * datetime : 2018-04-03 20:18
-         * aggr_type : 0
+         * title : 孙俪获飞天奖优秀女演员邓超傲娇自夸：身后一定有一位伟大的男人
+         * datetime : 2018-04-04 10:31
          * has_video : false
-         * share_url : http://toutiao.com/group/6540037168423764493/?iid=75274805517&app=news_article
-         * id : 6540037168423764493
-         * source : 新华网
+         * share_url : http://toutiao.com/group/6540368356539630093/?iid=75274786357&app=news_article
+         * id : 6540368356539630093
+         * source : 北青网
          * comment_count : 0
-         * article_url : http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm
-         * create_time : 1522721063
+         * article_url : http://h5.ent.ynet.com/2018/04/04/1081488t1263.html
+         * create_time : 1522798174
          * recommend : 0
          * tips : 0
-         * is_digg : 0
-         * item_source_url : /group/6540037168423764493/
-         * media_url : http://toutiao.com/m4377795668/
-         * display_time : 1522720897
-         * publish_time : 1522720897
+         * aggr_type : 1
+         * item_source_url : /item/6540368356539630093/
+         * media_url : http://toutiao.com/m52255723016/
+         * display_time : 1522809026
+         * publish_time : 1522809026
          * go_detail_count : 0
-         * group_flags : 0
+         * group_flags : 2
          * middle_mode : false
          * display_title :
-         * gallary_image_count : 0
-         * item_seo_url : /i6540037168423764493/
-         * tag_id : 6540037168423764493
-         * source_url : /group/6540037168423764493/
+         * gallary_image_count : 5
+         * item_seo_url : /i6540368356539630093/
+         * tag_id : 6540368356539630093
+         * source_url : /group/6540368356539630093/
          * article_genre : article
-         * item_id : 0
-         * natant_level : 0
          * large_mode : false
-         * seo_url : /i6540037168423764493/
+         * item_id : 6540368356539630093
+         * natant_level : 0
+         * is_digg : 0
+         * seo_url : /i6540368356539630093/
          * repin_count : 0
-         * url : http://www.xinhuanet.com/politics/2018-04/03/c_1122630387.htm
+         * url : http://h5.ent.ynet.com/2018/04/04/1081488t1263.html
          * level : 0
          * digg_count : 0
-         * behot_time : 1522757933
+         * behot_time : 1522809087
          * hot : 0
          * preload_web : 2
          * comments_count : 0
-         * has_image : false
+         * has_image : true
          * is_bury : 0
-         * group_id : 6540037168423764493
+         * group_id : 6540368356539630093
+         * middle_image : {"url":"http://p1.pstatp.com/list/7577000d417d35780139","width":281,"url_list":[{"url":"http://p1.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb3.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb9.pstatp.com/list/7577000d417d35780139"}],"uri":"list/7577000d417d35780139","height":500}
          */
 
         private String media_name;
@@ -154,7 +155,6 @@ public class NewsBean  {
         private int bury_count;
         private String title;
         private String datetime;
-        private int aggr_type;
         private boolean has_video;
         private String share_url;
         private long id;
@@ -164,7 +164,7 @@ public class NewsBean  {
         private int create_time;
         private int recommend;
         private int tips;
-        private int is_digg;
+        private int aggr_type;
         private String item_source_url;
         private String media_url;
         private int display_time;
@@ -178,9 +178,10 @@ public class NewsBean  {
         private long tag_id;
         private String source_url;
         private String article_genre;
+        private boolean large_mode;
         private long item_id;
         private int natant_level;
-        private boolean large_mode;
+        private int is_digg;
         private String seo_url;
         private int repin_count;
         private String url;
@@ -193,7 +194,8 @@ public class NewsBean  {
         private boolean has_image;
         private int is_bury;
         private long group_id;
-        private List<?> image_list;
+        private MiddleImageEntity middle_image;
+        private List<ImageListEntity> image_list;
 
         public String getMedia_name() {
             return media_name;
@@ -339,14 +341,6 @@ public class NewsBean  {
             this.datetime = datetime;
         }
 
-        public int getAggr_type() {
-            return aggr_type;
-        }
-
-        public void setAggr_type(int aggr_type) {
-            this.aggr_type = aggr_type;
-        }
-
         public boolean isHas_video() {
             return has_video;
         }
@@ -419,12 +413,12 @@ public class NewsBean  {
             this.tips = tips;
         }
 
-        public int getIs_digg() {
-            return is_digg;
+        public int getAggr_type() {
+            return aggr_type;
         }
 
-        public void setIs_digg(int is_digg) {
-            this.is_digg = is_digg;
+        public void setAggr_type(int aggr_type) {
+            this.aggr_type = aggr_type;
         }
 
         public String getItem_source_url() {
@@ -531,11 +525,19 @@ public class NewsBean  {
             this.article_genre = article_genre;
         }
 
+        public boolean isLarge_mode() {
+            return large_mode;
+        }
+
+        public void setLarge_mode(boolean large_mode) {
+            this.large_mode = large_mode;
+        }
+
         public long getItem_id() {
             return item_id;
         }
 
-        public void setItem_id(int item_id) {
+        public void setItem_id(long item_id) {
             this.item_id = item_id;
         }
 
@@ -547,12 +549,12 @@ public class NewsBean  {
             this.natant_level = natant_level;
         }
 
-        public boolean isLarge_mode() {
-            return large_mode;
+        public int getIs_digg() {
+            return is_digg;
         }
 
-        public void setLarge_mode(boolean large_mode) {
-            this.large_mode = large_mode;
+        public void setIs_digg(int is_digg) {
+            this.is_digg = is_digg;
         }
 
         public String getSeo_url() {
@@ -651,12 +653,108 @@ public class NewsBean  {
             this.group_id = group_id;
         }
 
-        public List<?> getImage_list() {
+        public MiddleImageEntity getMiddle_image() {
+            return middle_image;
+        }
+
+        public void setMiddle_image(MiddleImageEntity middle_image) {
+            this.middle_image = middle_image;
+        }
+
+        public List<ImageListEntity> getImage_list() {
             return image_list;
         }
 
-        public void setImage_list(List<?> image_list) {
+        public void setImage_list(List<ImageListEntity> image_list) {
             this.image_list = image_list;
+        }
+
+        public static class MiddleImageEntity {
+            /**
+             * url : http://p1.pstatp.com/list/7577000d417d35780139
+             * width : 281
+             * url_list : [{"url":"http://p1.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb3.pstatp.com/list/7577000d417d35780139"},{"url":"http://pb9.pstatp.com/list/7577000d417d35780139"}]
+             * uri : list/7577000d417d35780139
+             * height : 500
+             */
+
+            private String url;
+            private int width;
+            private String uri;
+            private int height;
+            private List<UrlListEntity> url_list;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public int getWidth() {
+                return width;
+            }
+
+            public void setWidth(int width) {
+                this.width = width;
+            }
+
+            public String getUri() {
+                return uri;
+            }
+
+            public void setUri(String uri) {
+                this.uri = uri;
+            }
+
+            public int getHeight() {
+                return height;
+            }
+
+            public void setHeight(int height) {
+                this.height = height;
+            }
+
+            public List<UrlListEntity> getUrl_list() {
+                return url_list;
+            }
+
+            public void setUrl_list(List<UrlListEntity> url_list) {
+                this.url_list = url_list;
+            }
+
+            public static class UrlListEntity {
+                /**
+                 * url : http://p1.pstatp.com/list/7577000d417d35780139
+                 */
+
+                private String url;
+
+                public String getUrl() {
+                    return url;
+                }
+
+                public void setUrl(String url) {
+                    this.url = url;
+                }
+            }
+        }
+
+        public static class ImageListEntity {
+            /**
+             * url : http://p1.pstatp.com/list/7577000d417d35780139
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
         }
     }
 }

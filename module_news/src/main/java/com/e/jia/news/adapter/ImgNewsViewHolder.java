@@ -1,6 +1,7 @@
 package com.e.jia.news.adapter;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -51,8 +52,10 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
         extra.append(stampToDate(data.getPublish_time() + ""));
         tv_extra.setText(extra);
 
+        Log.e("jia", "bindView: "+ data.getImage_list().get(0).getUrl()+"");
+
         Glide.with(itemView.getContext())
-                .load(data.getItem_source_url())
+                .load(data.getImage_list().get(0).getUrl()+"")
                 .into(iv_image);
 
         if (data.getComments_count() == 0) {
