@@ -45,7 +45,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
                 break;
             case TYPE_IMG:
                 View v2 = LayoutInflater.from(context).inflate(R.layout.item_news_article_img, parent, false);
-                viewHolder = new TextNewsViewHolder(v2);
+                viewHolder = new ImgNewsViewHolder(v2);
                 break;
         }
         return viewHolder;
