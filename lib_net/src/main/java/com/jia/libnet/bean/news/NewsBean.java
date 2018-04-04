@@ -194,7 +194,7 @@ public class NewsBean  {
         private boolean has_image;
         private int is_bury;
         private long group_id;
-        private MiddleImageEntity middle_image;
+//        private MiddleImageEntity middle_image;
         private List<ImageListEntity> image_list;
 
         public String getMedia_name() {
@@ -652,14 +652,14 @@ public class NewsBean  {
         public void setGroup_id(long group_id) {
             this.group_id = group_id;
         }
-
-        public MiddleImageEntity getMiddle_image() {
-            return middle_image;
-        }
-
-        public void setMiddle_image(MiddleImageEntity middle_image) {
-            this.middle_image = middle_image;
-        }
+//
+//        public MiddleImageEntity getMiddle_image() {
+//            return middle_image;
+//        }
+//
+//        public void setMiddle_image(MiddleImageEntity middle_image) {
+//            this.middle_image = middle_image;
+//        }
 
         public List<ImageListEntity> getImage_list() {
             return image_list;
