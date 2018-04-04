@@ -2,6 +2,7 @@ package com.e.jia.news.adapter;
 
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,11 +81,14 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
             public void onClick(View view) {
                 new JsPopupWindow.Builder()
                         .setContentViewId(R.layout.popup_news_list)
-                        .setWidth(100)
-                        .setHeight(50)
                         .setContext(itemView.getContext())
+                        .setOutSideCancle(true)
+                        .setFouse(false)
+                        .setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, itemView.getContext().getResources().getDisplayMetrics()))
+                        .setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, itemView.getContext().getResources().getDisplayMetrics()))
+                        .setAnimation(R.style.anim_pop)
                         .build()
-                        .showAsLocation(iv_dots, Gravity.LEFT,0,0);
+                        .showAsLocation(iv_dots, Gravity.LEFT| Gravity.TOP, 100, 0);
             }
         });
     }
