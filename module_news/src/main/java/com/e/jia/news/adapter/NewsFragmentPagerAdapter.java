@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 
 import com.e.jia.news.view.NewsListFragment;
+import com.jia.libnet.bean.channel.NewsChannel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 public class NewsFragmentPagerAdapter extends FragmentPagerAdapter {
-    private List<String> mList;
+    private List<NewsChannel.Channel> mList;
     private List<Fragment> mFragments = new ArrayList<>();
     private FragmentManager mFragmentManager;
 
@@ -31,30 +32,7 @@ public class NewsFragmentPagerAdapter extends FragmentPagerAdapter {
             return mFragments.get(position);
         } else {
             NewsListFragment fragment = new NewsListFragment();
-
-            switch (position){
-                case 0:
-                    fragment.setTag("__all__");
-                    break;
-                case 1:
-                    fragment.setTag("news_hot");
-                    break;
-                case 2:
-                    fragment.setTag("news_sports");
-                    break;
-                case 3:
-                    fragment.setTag("news_society");
-                    break;
-                case 4:
-                    fragment.setTag("news_entertainment");
-                    break;
-                case 5:
-                    fragment.setTag("news_tech");
-                    break;
-                case 6:
-                    fragment.setTag("news_game");
-                    break;
-            }
+            fragment.setTag(mList.get(position).getTag());
             mFragments.add(fragment);
             return fragment;
         }
@@ -67,10 +45,10 @@ public class NewsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mList.get(position);
+        return mList.get(position).getName();
     }
 
-    public void setData(List<String> list) {
-        mList = list;
+    public void setData(List<NewsChannel.Channel> channelList) {
+        mList = channelList;
     }
 }

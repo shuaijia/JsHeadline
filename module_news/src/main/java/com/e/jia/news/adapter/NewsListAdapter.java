@@ -67,7 +67,6 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
         if (list.get(position).getImage_list() != null && list.get(position).getImage_list().size() > 0) {
             type = TYPE_IMG;
         }
-        Log.e("jia", "getItemViewType: "+type );
         return type;
     }
 }

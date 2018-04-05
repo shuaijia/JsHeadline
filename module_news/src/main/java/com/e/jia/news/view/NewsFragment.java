@@ -1,5 +1,8 @@
 package com.e.jia.news.view;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -14,9 +17,15 @@ import com.e.jia.news.adapter.NewsFragmentPagerAdapter;
 import com.e.jia.news.R;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
+import com.google.gson.Gson;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
+import com.jia.libnet.bean.channel.NewsChannel;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +33,15 @@ import java.util.List;
  * Created by jia on 2018/3/31.
  */
 
-public class NewsFragment extends BaseFragment implements View.OnClickListener{
+public class NewsFragment extends BaseFragment implements View.OnClickListener {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private ImageView iv_channel_add;
 
     private NewsFragmentPagerAdapter mNewsFragmentPagerAdapter;
-    private List<String> mTitles = new ArrayList<>();
+
+    private NewsChannel channels;
 
     @Override
     protected View initFragmentView(LayoutInflater inflater) {
@@ -45,8 +55,10 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener{
         mViewPager = view.findViewById(R.id.vp_news_content);
         iv_channel_add = view.findViewById(R.id.iv_channel_add);
 
+        iv_channel_add.setOnClickListener(this);
+
         // 创建新功能引导
-         TapTargetView.showFor(getActivity(),
+        TapTargetView.showFor(getActivity(),
                 TapTarget.forView(view.findViewById(R.id.iv_channel_add), "点击这里，添加频道", "")
                         .outerCircleColor(R.color.colorAccent)
                         .outerCircleAlpha(0.96f)
@@ -66,21 +78,11 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener{
 
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
-        mTitles.add("推荐");
-        mTitles.add("热点");
-        mTitles.add("体育");
-        mTitles.add("社会");
-        mTitles.add("娱乐");
-        mTitles.add("科技");
-        mTitles.add("游戏");
-        for (String title : mTitles) {
-            TabLayout.Tab tab = mTabLayout.newTab(); //创建tab
-            tab.setText(title); //设置文字
-            mTabLayout.addTab(tab); //添加到tabLayout中
-        }
+
+        channels = getChannels(getContext());
 
         mNewsFragmentPagerAdapter = new NewsFragmentPagerAdapter(getChildFragmentManager());
-        mNewsFragmentPagerAdapter.setData(mTitles);
+        mNewsFragmentPagerAdapter.setData(channels.getSelectedList());
         mViewPager.setAdapter(mNewsFragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(50);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -99,9 +101,29 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        if (view.getId()==R.id.iv_channel_add) {
+        if (view.getId() == R.id.iv_channel_add) {
 
+            startActivity(new Intent(getActivity(), ChannelActivity.class));
 
         }
+    }
+
+    public NewsChannel getChannels(Context context) {
+        //将json数据变成字符串
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            //获取assets资源管理器
+            AssetManager assetManager = context.getAssets();
+            //通过管理器打开文件并读取
+            BufferedReader bf = new BufferedReader(new InputStreamReader(
+                    assetManager.open("Channels.json")));
+            String line;
+            while ((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new Gson().fromJson(stringBuilder.toString(), NewsChannel.class);
     }
 }
