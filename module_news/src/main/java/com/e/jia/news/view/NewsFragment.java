@@ -113,6 +113,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
             startActivity(new Intent(getActivity(), ChannelActivity.class));
 
         }
+
     }
 
     @Subscribe()
