@@ -1,5 +1,6 @@
 package com.e.jia.news.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.e.jia.news.adapter.NewsListAdapter;
 import com.e.jia.news.contract.NewsListContract;
 import com.e.jia.news.presenter.NewsListPresenter;
 import com.jia.base.BaseFragment;
+import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libnet.bean.news.NewsBean;
 
 /**
@@ -43,8 +45,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         refresh_layout = view.findViewById(R.id.refresh_layout);
         refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         recycler_view = view.findViewById(R.id.recycler_view);
-        tv_no_data=view.findViewById(R.id.tv_no_data);
-        adapter=new NewsListAdapter(getActivity());
+        tv_no_data = view.findViewById(R.id.tv_no_data);
+        adapter = new NewsListAdapter(getActivity());
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
 
@@ -58,6 +60,19 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         mPresenter.getNewsListByTag(tag);
         tv_no_data.setVisibility(View.VISIBLE);
         tv_no_data.setText("加载中...");
+
+        adapter.setListener(new NewsListAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(NewsBean.DataEntity data) {
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra("url", data.getArticle_url());
+                intent.putExtra("title", data.getTitle());
+                if (data.getImage_list() != null && data.getImage_list().size() > 0) {
+                    intent.putExtra("imgUrl", data.getImage_list().get(0).getUrl());
+                }
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -88,7 +103,7 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     public void onRefreshFail(String info) {
         refresh_layout.setRefreshing(false);
 
-        Toast.makeText(getContext(),""+info,Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "" + info, Toast.LENGTH_LONG).show();
 
         tv_no_data.setVisibility(View.VISIBLE);
         tv_no_data.setText("暂无数据");

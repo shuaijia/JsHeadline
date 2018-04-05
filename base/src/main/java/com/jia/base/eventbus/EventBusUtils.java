@@ -41,7 +41,7 @@ public class EventBusUtils {
      * 注意：只会接收到最近发送的一次粘性事件，之前的会接受不到。
      * @param event
      */
-    public static void sendStickyEvent(Event event){
+    public static void sendStickyEvent(Object event){
         EventBus.getDefault().postSticky(event);
     }
 }
