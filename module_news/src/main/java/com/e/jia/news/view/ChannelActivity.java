@@ -16,6 +16,8 @@ import com.e.jia.news.recycler.ChannelTouchCallback;
 import com.google.gson.Gson;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
+import com.jia.base.event.NewsChannelEvent;
+import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libnet.bean.channel.NewsChannel;
 
 import java.io.BufferedReader;
@@ -72,7 +74,14 @@ public class ChannelActivity extends BaseActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if(mineAdapter.isEditable()){
+                    mineAdapter.setEditable(false);
+                }else{
+                    NewsChannelEvent event=new NewsChannelEvent();
+                    event.setList(mineAdapter.getList());
+                    EventBusUtils.sendEvent(event);
+                    finish();
+                }
             }
         });
     }

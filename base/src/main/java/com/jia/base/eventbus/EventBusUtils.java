@@ -30,7 +30,7 @@ public class EventBusUtils {
      * 发送消息(事件)
      * @param event
      */
-    public static void sendEvent(Event event){
+    public static void sendEvent(Object event){
         EventBus.getDefault().post(event);
     }
 

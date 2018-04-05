@@ -20,7 +20,11 @@ import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.gson.Gson;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
+import com.jia.base.annotation.BindEventBus;
+import com.jia.base.event.NewsChannelEvent;
 import com.jia.libnet.bean.channel.NewsChannel;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +37,7 @@ import java.util.List;
  * Created by jia on 2018/3/31.
  */
 
+@BindEventBus
 public class NewsFragment extends BaseFragment implements View.OnClickListener {
 
     private TabLayout mTabLayout;
@@ -42,6 +47,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     private NewsFragmentPagerAdapter mNewsFragmentPagerAdapter;
 
     private NewsChannel channels;
+    private List<NewsChannel.Channel> selectChannels;
 
     @Override
     protected View initFragmentView(LayoutInflater inflater) {
@@ -56,6 +62,9 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         iv_channel_add = view.findViewById(R.id.iv_channel_add);
 
         iv_channel_add.setOnClickListener(this);
+
+        channels = getChannels(getContext());
+        selectChannels=channels.getSelectedList();
 
         // 创建新功能引导
         TapTargetView.showFor(getActivity(),
@@ -79,10 +88,8 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
 
-        channels = getChannels(getContext());
-
         mNewsFragmentPagerAdapter = new NewsFragmentPagerAdapter(getChildFragmentManager());
-        mNewsFragmentPagerAdapter.setData(channels.getSelectedList());
+        mNewsFragmentPagerAdapter.setData(selectChannels);
         mViewPager.setAdapter(mNewsFragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(50);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -106,6 +113,12 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
             startActivity(new Intent(getActivity(), ChannelActivity.class));
 
         }
+    }
+
+    @Subscribe()
+    public void onEvent(NewsChannelEvent event){
+        selectChannels=event.getList();
+        initFragmentData(null);
     }
 
     public NewsChannel getChannels(Context context) {

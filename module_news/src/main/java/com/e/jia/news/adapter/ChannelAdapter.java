@@ -33,6 +33,15 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ChannelV
         this.isMine = isMine;
     }
 
+    public boolean isEditable() {
+        return isEditable;
+    }
+
+    public void setEditable(boolean isEditable){
+        this.isEditable=isEditable;
+        notifyDataSetChanged();
+    }
+
     public void addData(NewsChannel.Channel data) {
         list.add(data);
         notifyItemInserted(list.size() - 1);
