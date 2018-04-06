@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.blankj.utilcode.util.Utils;
 import com.jia.base.annotation.Action;
 
 import java.io.IOException;
@@ -44,6 +45,10 @@ public class BaseApplication extends Application {
         this.mMainThreadHandler = new Handler();
 
         getAllActivities();
+
+
+        //初始化开源工具类
+        Utils.init(this);
     }
 
     /**

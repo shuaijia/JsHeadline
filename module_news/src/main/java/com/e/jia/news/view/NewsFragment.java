@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.e.jia.news.adapter.NewsFragmentPagerAdapter;
 import com.e.jia.news.R;
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -39,6 +40,7 @@ import java.util.List;
 
 @BindEventBus
 public class NewsFragment extends BaseFragment implements View.OnClickListener {
+    private static final String SHOW_TAP_TARGET = "SHOW_TAP_TARGET";
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
@@ -64,25 +66,9 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         iv_channel_add.setOnClickListener(this);
 
         channels = getChannels(getContext());
-        selectChannels=channels.getSelectedList();
+        selectChannels = channels.getSelectedList();
 
-        // 创建新功能引导
-        TapTargetView.showFor(getActivity(),
-                TapTarget.forView(view.findViewById(R.id.iv_channel_add), "点击这里，添加频道", "")
-                        .outerCircleColor(R.color.colorAccent)
-                        .outerCircleAlpha(0.96f)
-                        .targetCircleColor(R.color.white)
-                        .titleTextSize(20)
-                        .titleTextColor(R.color.colorAccent)
-                        .descriptionTextSize(10)
-                        .textColor(R.color.white)
-                        .textTypeface(Typeface.SANS_SERIF)
-                        .dimColor(R.color.white)
-                        .drawShadow(false)
-                        .cancelable(true)
-                        .tintTarget(false)
-                        .transparentTarget(false)
-                        .targetRadius(50));
+        showTapTarget();
     }
 
     @Override
@@ -117,8 +103,8 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Subscribe()
-    public void onEvent(NewsChannelEvent event){
-        selectChannels=event.getList();
+    public void onEvent(NewsChannelEvent event) {
+        selectChannels = event.getList();
         initFragmentData(null);
     }
 
@@ -139,5 +125,29 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
             e.printStackTrace();
         }
         return new Gson().fromJson(stringBuilder.toString(), NewsChannel.class);
+    }
+
+    private void showTapTarget() {
+        if (!SPUtils.getInstance().getBoolean(SHOW_TAP_TARGET)) {
+            // 创建新功能引导
+            TapTargetView.showFor(getActivity(),
+                    TapTarget.forView(view.findViewById(R.id.iv_channel_add), "点击这里，添加频道", "")
+                            .outerCircleColor(R.color.colorAccent)
+                            .outerCircleAlpha(0.96f)
+                            .targetCircleColor(R.color.white)
+                            .titleTextSize(20)
+                            .titleTextColor(R.color.colorAccent)
+                            .descriptionTextSize(10)
+                            .textColor(R.color.white)
+                            .textTypeface(Typeface.SANS_SERIF)
+                            .dimColor(R.color.white)
+                            .drawShadow(false)
+                            .cancelable(true)
+                            .tintTarget(false)
+                            .transparentTarget(false)
+                            .targetRadius(50));
+            SPUtils.getInstance().put(SHOW_TAP_TARGET, true);
+        }
+
     }
 }
