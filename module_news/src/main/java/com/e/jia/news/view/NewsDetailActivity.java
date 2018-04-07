@@ -4,10 +4,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -43,6 +47,7 @@ public class NewsDetailActivity extends BaseActivity {
     private SwipeRefreshLayout swipe;
     private WebView webView;
     private ImageView backdrop;
+    private CollapsingToolbarLayout collapsing_toolbar;
 
     private NewsBean.DataEntity data;
 
@@ -61,6 +66,9 @@ public class NewsDetailActivity extends BaseActivity {
         swipe = findViewById(R.id.swipe);
         webView = findViewById(R.id.webView);
         backdrop = findViewById(R.id.backdrop);
+        collapsing_toolbar=findViewById(R.id.collapsing_toolbar);
+
+        swipe.setColorSchemeResources(R.color.colorPrimary);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -110,7 +118,7 @@ public class NewsDetailActivity extends BaseActivity {
                 }
             }
         });
-        webView.setWebViewClient(new DetailWebViewClient());
+        webView.setWebViewClient(new WebViewClient());
     }
 
     @Override
@@ -123,41 +131,41 @@ public class NewsDetailActivity extends BaseActivity {
         url = getIntent().getStringExtra("url");
         title = getIntent().getStringExtra("title");
         imgUrl = getIntent().getStringExtra("imgUrl");
+
         toolbar.setTitle(title);
+        collapsing_toolbar.setTitle(title);
+
         if (TextUtils.isEmpty(url)) return;
 
         webView.loadUrl(url);
 
-        if(TextUtils.isEmpty(imgUrl)){
+        if (TextUtils.isEmpty(imgUrl)) {
             backdrop.setVisibility(View.GONE);
-        }else{
+        } else {
             Glide.with(this)
                     .load(imgUrl)
                     .into(backdrop);
         }
     }
 
-    class DetailWebViewClient extends WebViewClient {
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar_news, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_comment) {
+            Snackbar.make(toolbar, "搜索", Snackbar.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.action_personal) {
+            Snackbar.make(toolbar, "个人中心", Snackbar.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.action_share) {
+            Snackbar.make(toolbar, "分享", Snackbar.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.action_chrome) {
+            Snackbar.make(toolbar, "浏览器", Snackbar.LENGTH_LONG).show();
         }
 
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-        }
-
-        @Override
-        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-            super.onReceivedError(view, request, error);
-            Log.e(TAG, "onReceivedError: " + error.toString());
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.e(TAG, "shouldOverrideUrlLoading: " + url);
-            return super.shouldOverrideUrlLoading(view, url);
-        }
+        return false;
     }
 }
