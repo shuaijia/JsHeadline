@@ -61,7 +61,7 @@ public class BaseApplication extends Application {
             while (entries.hasMoreElements()) {
                 String entryName = (String) entries.nextElement();
                 // 开始匹配Activity
-                if (entryName.contains("activity") && entryName.contains("Activity")) {
+                if (entryName.contains("Activity")) {
                     // 通过反射获得Activity类
                     Class entryClass = Class.forName(entryName);
                     if (entryClass.isAnnotationPresent(Action.class)) {
