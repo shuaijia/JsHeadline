@@ -19,6 +19,7 @@ import com.e.jia.video.VideoFragment;
 import com.google.gson.Gson;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
+import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
 import com.jia.libnet.bean.channel.NewsChannel;
@@ -32,6 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @BindEventBus
+@Action("MainActivity")
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private static final int TAB_NEWS = 0;

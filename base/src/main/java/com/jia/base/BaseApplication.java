@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.blankj.utilcode.util.Utils;
+import com.elbbbird.android.socialsdk.SocialSDK;
 import com.jia.base.annotation.Action;
 
 import java.io.IOException;
@@ -46,6 +47,8 @@ public class BaseApplication extends Application {
 
         getAllActivities();
 
+        SocialSDK.setDebugMode(true);
+        SocialSDK.init("wechat_app_id", "4214463192", "1106751527");
 
         //初始化开源工具类
         Utils.init(this);
@@ -61,7 +64,7 @@ public class BaseApplication extends Application {
             while (entries.hasMoreElements()) {
                 String entryName = (String) entries.nextElement();
                 // 开始匹配Activity
-                if (entryName.contains("activity") && entryName.contains("Activity")) {
+                if (entryName.contains("Activity")) {
                     // 通过反射获得Activity类
                     Class entryClass = Class.forName(entryName);
                     if (entryClass.isAnnotationPresent(Action.class)) {

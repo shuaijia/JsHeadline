@@ -20,22 +20,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.e.jia.news.R;
+import com.elbbbird.android.socialsdk.SocialSDK;
+import com.elbbbird.android.socialsdk.model.SocialShareScene;
+import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
-import com.jia.base.annotation.BindEventBus;
 import com.jia.libnet.bean.news.NewsBean;
 
 import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 
 /**
  * 新闻详情界面
@@ -54,6 +50,8 @@ public class NewsDetailActivity extends BaseActivity {
     private String url;
     private String title;
     private String imgUrl;
+    private String shareUrl;
+    private String desc;
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
@@ -131,6 +129,9 @@ public class NewsDetailActivity extends BaseActivity {
         url = getIntent().getStringExtra("url");
         title = getIntent().getStringExtra("title");
         imgUrl = getIntent().getStringExtra("imgUrl");
+        shareUrl = getIntent().getStringExtra("shareUrl");
+        desc = getIntent().getStringExtra("desc");
+
 
         toolbar.setTitle(title);
         collapsing_toolbar.setTitle(title);
@@ -146,6 +147,8 @@ public class NewsDetailActivity extends BaseActivity {
                     .load(imgUrl)
                     .into(backdrop);
         }
+
+        SocialSDK.shareTo(this, new SocialShareScene(2, "Headline", title, desc, url, shareUrl));
     }
 
     @Override
@@ -167,5 +170,24 @@ public class NewsDetailActivity extends BaseActivity {
         }
 
         return false;
+    }
+
+    @Subscribe
+    public void onShareResult(ShareBusEvent event) {
+        switch (event.getType()) {
+            case ShareBusEvent.TYPE_SUCCESS:
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_SUCCESS " + event.getId());
+                Toast.makeText(this,"分享成功",Toast.LENGTH_SHORT).show();
+                break;
+            case ShareBusEvent.TYPE_FAILURE:
+                Exception e = event.getException();
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_FAILURE " + e.toString());
+                Toast.makeText(this,"分享失败",Toast.LENGTH_SHORT).show();
+                break;
+            case ShareBusEvent.TYPE_CANCEL:
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_CANCEL");
+                Toast.makeText(this,"分享取消",Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
