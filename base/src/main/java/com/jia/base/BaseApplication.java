@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.blankj.utilcode.util.Utils;
 import com.jia.base.annotation.Action;
 
 import java.io.IOException;
@@ -44,6 +45,10 @@ public class BaseApplication extends Application {
         this.mMainThreadHandler = new Handler();
 
         getAllActivities();
+
+
+        //初始化开源工具类
+        Utils.init(this);
     }
 
     /**
@@ -56,7 +61,7 @@ public class BaseApplication extends Application {
             while (entries.hasMoreElements()) {
                 String entryName = (String) entries.nextElement();
                 // 开始匹配Activity
-                if (entryName.contains("activity") && entryName.contains("Activity")) {
+                if (entryName.contains("Activity")) {
                     // 通过反射获得Activity类
                     Class entryClass = Class.forName(entryName);
                     if (entryClass.isAnnotationPresent(Action.class)) {

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,17 +16,24 @@ import android.view.View;
 import com.e.jia.news.view.NewsFragment;
 import com.e.jia.picture.PictureFragment;
 import com.e.jia.video.VideoFragment;
+import com.google.gson.Gson;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
+import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
+import com.jia.libnet.bean.channel.NewsChannel;
 
 import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 @BindEventBus
+@Action("MainActivity")
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private static final int TAB_NEWS = 0;
@@ -50,6 +58,38 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     protected void initActivityView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+
+        NewsChannel channels=new NewsChannel();
+
+        List<NewsChannel.Channel> list=new ArrayList<>();
+
+        list.add(new NewsChannel.Channel("推荐","__all__",true));
+        list.add(new NewsChannel.Channel("热点","news_hot",true));
+        list.add(new NewsChannel.Channel("社会","news_society",true));
+        list.add(new NewsChannel.Channel("娱乐","news_entertainment",true));
+        list.add(new NewsChannel.Channel("科技","news_tech",true));
+        list.add(new NewsChannel.Channel("军事","news_military",true));
+        list.add(new NewsChannel.Channel("体育","news_sports",true));
+        list.add(new NewsChannel.Channel("汽车","news_car",true));
+
+        list.add(new NewsChannel.Channel("财经","news_finance",false));
+        list.add(new NewsChannel.Channel("国际","news_world",false));
+        list.add(new NewsChannel.Channel("时尚","news_fashion",false));
+        list.add(new NewsChannel.Channel("旅游","news_travel",false));
+        list.add(new NewsChannel.Channel("探索","news_discovery",false));
+        list.add(new NewsChannel.Channel("育儿","news_baby",false));
+        list.add(new NewsChannel.Channel("养生","news_regimen",false));
+        list.add(new NewsChannel.Channel("故事","news_story",false));
+        list.add(new NewsChannel.Channel("美文","news_essay",false));
+        list.add(new NewsChannel.Channel("游戏","news_game",false));
+        list.add(new NewsChannel.Channel("历史","news_history",false));
+        list.add(new NewsChannel.Channel("美食","news_food",false));
+
+        channels.setChannels(list);
+
+
+        Log.e(TAG, "initActivityView: "+new Gson().toJson(channels));
     }
 
     @Override

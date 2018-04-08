@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.e.jia.news.R;
+import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libnet.bean.news.NewsBean;
 
 import java.util.List;
@@ -25,6 +26,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
     private Context context;
 
     private List<NewsBean.DataEntity> list;
+
+    private OnItemClickListener listener;
 
     public NewsListAdapter(Context context) {
         this.context = context;
@@ -52,8 +55,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(NewsBaseViewHolder holder, int position) {
+    public void onBindViewHolder(NewsBaseViewHolder holder, final int position) {
         holder.bindView(list.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener!=null) listener.onClick(list.get(position));
+            }
+        });
     }
 
     @Override
@@ -67,7 +77,18 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
         if (list.get(position).getImage_list() != null && list.get(position).getImage_list().size() > 0) {
             type = TYPE_IMG;
         }
-        Log.e("jia", "getItemViewType: "+type );
         return type;
+    }
+
+    public OnItemClickListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener{
+        void onClick(NewsBean.DataEntity data);
     }
 }
