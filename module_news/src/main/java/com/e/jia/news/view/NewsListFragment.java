@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -16,7 +15,6 @@ import com.e.jia.news.adapter.NewsListAdapter;
 import com.e.jia.news.contract.NewsListContract;
 import com.e.jia.news.presenter.NewsListPresenter;
 import com.jia.base.BaseFragment;
-import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libnet.bean.news.NewsBean;
 
 /**
@@ -66,7 +64,9 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
             public void onClick(NewsBean.DataEntity data) {
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("url", data.getArticle_url());
-                intent.putExtra("title", data.getTitle());
+                intent.putExtra("title", data.getMedia_name());
+                intent.putExtra("shareUrl", data.getShare_url());
+                intent.putExtra("desc", data.getTitle());
                 if (data.getImage_list() != null && data.getImage_list().size() > 0) {
                     intent.putExtra("imgUrl", data.getImage_list().get(0).getUrl());
                 }
