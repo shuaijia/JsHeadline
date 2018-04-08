@@ -42,4 +42,7 @@ dependencies {
     // RxLifecycle
     compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+
+    // 分享
+    compile 'com.elbbbird.android:socialsdk:0.2.0@aar'
 }
