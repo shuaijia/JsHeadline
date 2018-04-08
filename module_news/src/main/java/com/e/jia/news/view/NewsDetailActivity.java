@@ -1,6 +1,8 @@
 package com.e.jia.news.view;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -148,7 +150,6 @@ public class NewsDetailActivity extends BaseActivity {
                     .into(backdrop);
         }
 
-        SocialSDK.shareTo(this, new SocialShareScene(2, "Headline", title, desc, url, shareUrl));
     }
 
     @Override
@@ -160,13 +161,19 @@ public class NewsDetailActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_comment) {
-            Snackbar.make(toolbar, "搜索", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(toolbar, "评论", Snackbar.LENGTH_LONG).show();
         } else if (item.getItemId() == R.id.action_personal) {
             Snackbar.make(toolbar, "个人中心", Snackbar.LENGTH_LONG).show();
         } else if (item.getItemId() == R.id.action_share) {
-            Snackbar.make(toolbar, "分享", Snackbar.LENGTH_LONG).show();
+
+            SocialSDK.shareTo(this, new SocialShareScene(2, "Headline", title, desc, url, shareUrl));
+
         } else if (item.getItemId() == R.id.action_chrome) {
-            Snackbar.make(toolbar, "浏览器", Snackbar.LENGTH_LONG).show();
+
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+
         }
 
         return false;

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.e.jia.news.R;
+import com.elbbbird.android.socialsdk.SocialSDK;
+import com.elbbbird.android.socialsdk.model.SocialShareScene;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libui.CircularImage;
 import com.jia.libui.JsPopupWindow;
@@ -30,6 +32,9 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
     public ImageView iv_dots;
     private CircularImage iv_media;
 
+    private JsPopupWindow popup;
+    private TextView tv_share;
+
     public TextNewsViewHolder(View itemView) {
         super(itemView);
         tv_title = itemView.findViewById(R.id.tv_title);
@@ -37,10 +42,20 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
         tv_extra = itemView.findViewById(R.id.tv_extra);
         iv_dots = itemView.findViewById(R.id.iv_dots);
         iv_media = itemView.findViewById(R.id.iv_media);
+
+        popup = new JsPopupWindow.Builder()
+                .setContentViewId(R.layout.popup_news_list)
+                .setContext(itemView.getContext())
+                .setOutSideCancle(true)
+                .setFouse(false)
+                .setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, itemView.getContext().getResources().getDisplayMetrics()))
+                .setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, itemView.getContext().getResources().getDisplayMetrics()))
+                .setAnimation(R.style.anim_pop)
+                .build();
     }
 
     @Override
-    public void bindView(NewsBean.DataEntity data) {
+    public void bindView(final NewsBean.DataEntity data) {
         tv_title.setText(data.getTitle() + "");
         tv_abstract.setText(data.getAbstractX() + "");
         StringBuffer extra = new StringBuffer();
@@ -65,16 +80,17 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
         iv_dots.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new JsPopupWindow.Builder()
-                        .setContentViewId(R.layout.popup_news_list)
-                        .setContext(itemView.getContext())
-                        .setOutSideCancle(true)
-                        .setFouse(false)
-                        .setWidth((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, itemView.getContext().getResources().getDisplayMetrics()))
-                        .setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, itemView.getContext().getResources().getDisplayMetrics()))
-                        .setAnimation(R.style.anim_pop)
-                        .build()
-                        .showAsLocation(iv_dots, Gravity.LEFT| Gravity.TOP, 100, 0);
+                popup.showAtLocation(iv_dots, Gravity.LEFT | Gravity.TOP, 100, 0);
+            }
+        });
+
+        tv_share = (TextView) popup.getItemView(R.id.tv_share);
+
+        tv_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SocialSDK.shareTo(itemView.getContext(), new SocialShareScene(2, "Headline", data.getMedia_name(), data.getTitle(), data.getUrl(), data.getShare_url()));
+
             }
         });
     }
