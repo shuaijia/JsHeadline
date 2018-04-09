@@ -2,6 +2,7 @@ package com.e.jia.news.view;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.e.jia.news.R;
+import com.e.jia.news.adapter.NewsCommentAdapter;
+import com.e.jia.news.adapter.NewsListAdapter;
 import com.e.jia.news.contract.NewsCommentContract;
 import com.e.jia.news.presenter.NewsCommentPresenter;
 import com.jia.base.BaseActivity;
@@ -28,6 +31,8 @@ public class NewsCommentActivity extends BaseActivity<NewsCommentContract.NewsCo
     private RecyclerView recycler_view;
     private SwipeRefreshLayout refresh_layout;
     private TextView tv_no_data;
+
+    private NewsCommentAdapter adapter;
 
     private String groupId;
     private String itemId;
@@ -58,6 +63,10 @@ public class NewsCommentActivity extends BaseActivity<NewsCommentContract.NewsCo
         tv_no_data.setVisibility(View.GONE);
 
         initToolBar();
+
+        adapter = new NewsCommentAdapter(this);
+        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        recycler_view.setAdapter(adapter);
 
         mPresenter.getNewsCommentList(groupId, itemId, "0", "100");
     }
@@ -93,6 +102,8 @@ public class NewsCommentActivity extends BaseActivity<NewsCommentContract.NewsCo
     public void onRefresh(List<NewsCommentBean.DataEntity.CommentsEntity> list) {
         refresh_layout.setRefreshing(false);
         tv_no_data.setVisibility(View.GONE);
+
+        adapter.setData(list);
     }
 
     @Override
