@@ -54,6 +54,8 @@ public class NewsDetailActivity extends BaseActivity {
     private String imgUrl;
     private String shareUrl;
     private String desc;
+    private String groupId;
+    private String itemId;
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class NewsDetailActivity extends BaseActivity {
         swipe = findViewById(R.id.swipe);
         webView = findViewById(R.id.webView);
         backdrop = findViewById(R.id.backdrop);
-        collapsing_toolbar=findViewById(R.id.collapsing_toolbar);
+        collapsing_toolbar = findViewById(R.id.collapsing_toolbar);
 
         swipe.setColorSchemeResources(R.color.colorPrimary);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -133,7 +135,8 @@ public class NewsDetailActivity extends BaseActivity {
         imgUrl = getIntent().getStringExtra("imgUrl");
         shareUrl = getIntent().getStringExtra("shareUrl");
         desc = getIntent().getStringExtra("desc");
-
+        groupId = getIntent().getStringExtra("groupId");
+        itemId = getIntent().getStringExtra("itemId");
 
         toolbar.setTitle(title);
         collapsing_toolbar.setTitle(title);
@@ -161,7 +164,12 @@ public class NewsDetailActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_comment) {
-            Snackbar.make(toolbar, "评论", Snackbar.LENGTH_LONG).show();
+
+            Intent intent = new Intent(this, NewsCommentActivity.class);
+            intent.putExtra("groupId", groupId);
+            intent.putExtra("itemId", itemId);
+            startActivity(intent);
+
         } else if (item.getItemId() == R.id.action_personal) {
             Snackbar.make(toolbar, "个人中心", Snackbar.LENGTH_LONG).show();
         } else if (item.getItemId() == R.id.action_share) {
@@ -184,16 +192,16 @@ public class NewsDetailActivity extends BaseActivity {
         switch (event.getType()) {
             case ShareBusEvent.TYPE_SUCCESS:
                 Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_SUCCESS " + event.getId());
-                Toast.makeText(this,"分享成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "分享成功", Toast.LENGTH_SHORT).show();
                 break;
             case ShareBusEvent.TYPE_FAILURE:
                 Exception e = event.getException();
                 Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_FAILURE " + e.toString());
-                Toast.makeText(this,"分享失败",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "分享失败", Toast.LENGTH_SHORT).show();
                 break;
             case ShareBusEvent.TYPE_CANCEL:
                 Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_CANCEL");
-                Toast.makeText(this,"分享取消",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "分享取消", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

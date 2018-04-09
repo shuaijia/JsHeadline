@@ -67,6 +67,9 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
                 intent.putExtra("title", data.getMedia_name());
                 intent.putExtra("shareUrl", data.getShare_url());
                 intent.putExtra("desc", data.getTitle());
+                intent.putExtra("groupId", data.getGroup_id());
+                intent.putExtra("itemId", data.getItem_id());
+
                 if (data.getImage_list() != null && data.getImage_list().size() > 0) {
                     intent.putExtra("imgUrl", data.getImage_list().get(0).getUrl());
                 }
