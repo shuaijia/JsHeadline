@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libnet.bean.news.NewsCommentBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Description:
@@ -169,6 +172,22 @@ public class HttpMethod {
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(subscriber);
+
+    }
+
+    /**
+     * 获取新闻评价列表
+     * @param groupId 头条号
+     * @param itemId 文章号
+     * @param offset 偏移量
+     * @param count 数量
+     * @param subscriber
+     */
+    public void getNewsCommentList(String groupId, String itemId, String offset,String count,Subscriber<NewsCommentBean> subscriber){
+        service.getNewsComment(groupId, itemId,offset,count)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
 
     }
 }
