@@ -54,7 +54,7 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
 
         StringBuffer extra = new StringBuffer();
         extra.append(data.getMedia_name() + " ");
-        if (data.getComments_count() == 0) {
+        if (data.getComment_count() == 0) {
             extra.append("暂无评论 ");
         } else {
             extra.append(data.getComments_count() + "条评论 ");

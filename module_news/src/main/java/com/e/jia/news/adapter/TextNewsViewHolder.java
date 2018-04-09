@@ -60,7 +60,7 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
         tv_abstract.setText(data.getAbstractX() + "");
         StringBuffer extra = new StringBuffer();
         if (!TextUtils.isEmpty(data.getMedia_name())) extra.append(data.getMedia_name() + " ");
-        if (data.getComments_count() == 0) {
+        if (data.getComment_count() == 0) {
             extra.append("暂无评论 ");
         } else {
             extra.append(data.getComments_count() + "条评论 ");
