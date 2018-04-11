@@ -145,7 +145,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
                             .cancelable(true)
                             .tintTarget(false)
                             .transparentTarget(false)
-                            .targetRadius(50));
+                            .targetRadius(30));
             SPUtils.getInstance().put(SHOW_TAP_TARGET, true);
         }
 

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
+import com.jia.libnet.bean.photo.PhotoArticleBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +44,7 @@ public class HttpMethod {
         @Override
         public void log(String message) {
             //打印retrofit日志
-            Log.i("RetrofitLog","retrofitBack = "+message);
+            Log.i("RetrofitLog", "retrofitBack = " + message);
         }
     });
 
@@ -167,7 +168,7 @@ public class HttpMethod {
         }
     }
 
-    public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber){
+    public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber) {
 //        service.getNewsByTag("2", category,as)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
@@ -177,17 +178,31 @@ public class HttpMethod {
 
     /**
      * 获取新闻评价列表
-     * @param groupId 头条号
-     * @param itemId 文章号
-     * @param offset 偏移量
-     * @param count 数量
+     *
+     * @param groupId    头条号
+     * @param itemId     文章号
+     * @param offset     偏移量
+     * @param count      数量
      * @param subscriber
      */
-    public void getNewsCommentList(String groupId, String itemId, String offset,String count,Subscriber<NewsCommentBean> subscriber){
-        service.getNewsComment(groupId, itemId,offset,count)
+    public void getNewsCommentList(String groupId, String itemId, String offset, String count, Subscriber<NewsCommentBean> subscriber) {
+        service.getNewsComment(groupId, itemId, offset, count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
 
+    }
+
+    /**
+     * 获取 图片 文章 列表
+     * @param category
+     * @param time
+     * @param subscriber
+     */
+    public void getPhotoArticleLisr(String category, String time, Subscriber<PhotoArticleBean> subscriber) {
+        service.getPhotoArticle(category, time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
     }
 }

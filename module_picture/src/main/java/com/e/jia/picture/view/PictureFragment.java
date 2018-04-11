@@ -1,4 +1,4 @@
-package com.e.jia.picture;
+package com.e.jia.picture.view;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewParent;
 
+import com.e.jia.picture.R;
+import com.e.jia.picture.adapter.PhotoFragmentPagerAdapter;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
 
@@ -23,6 +25,8 @@ public class PictureFragment extends BaseFragment {
     private ViewPager vp_img_content;
 
     private List<String> mTitles = new ArrayList<>();
+
+    private PhotoFragmentPagerAdapter pagerAdapter;
 
     @Override
     protected View initFragmentView(LayoutInflater inflater) {
@@ -47,6 +51,11 @@ public class PictureFragment extends BaseFragment {
             tab.setText(title); //设置文字
             mTabLayout.addTab(tab); //添加到tabLayout中
         }
+
+        pagerAdapter = new PhotoFragmentPagerAdapter(getChildFragmentManager());
+        vp_img_content.setAdapter(pagerAdapter);
+        vp_img_content.setOffscreenPageLimit(10);
+        mTabLayout.setupWithViewPager(vp_img_content);
     }
 
     @Override

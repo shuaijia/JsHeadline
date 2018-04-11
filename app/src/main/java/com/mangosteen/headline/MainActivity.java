@@ -17,23 +17,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.e.jia.news.view.NewsFragment;
-import com.e.jia.picture.PictureFragment;
+import com.e.jia.picture.view.PictureFragment;
 import com.e.jia.video.VideoFragment;
 import com.elbbbird.android.socialsdk.SocialSDK;
 import com.elbbbird.android.socialsdk.model.SocialShareScene;
 import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
-import com.google.gson.Gson;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
 import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
-import com.jia.libnet.bean.channel.NewsChannel;
 
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
