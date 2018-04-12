@@ -56,10 +56,13 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
 
     @Override
     public void bindView(final NewsBean.DataEntity data) {
-        tv_title.setText(data.getTitle() + "");
+        tv_title.setText(data.getTitle()+"");
         tv_abstract.setText(data.getAbstractX() + "");
         StringBuffer extra = new StringBuffer();
-        if (!TextUtils.isEmpty(data.getMedia_name())) extra.append(data.getMedia_name() + " ");
+        if (TextUtils.isEmpty(data.getMedia_name()) || data.getMedia_name().equals("null"))
+            extra.append("推广 ");
+        else
+            extra.append(data.getMedia_name() + " ");
         if (data.getComment_count() == 0) {
             extra.append("暂无评论 ");
         } else {

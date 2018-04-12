@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -62,6 +63,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
         adapter.setListener(new NewsListAdapter.OnItemClickListener() {
             @Override
             public void onClick(NewsBean.DataEntity data) {
+                if (TextUtils.isEmpty(data.getMedia_name())) return;
+
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("url", data.getArticle_url());
                 intent.putExtra("title", data.getMedia_name());
