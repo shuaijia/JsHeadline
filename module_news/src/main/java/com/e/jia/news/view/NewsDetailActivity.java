@@ -1,12 +1,8 @@
 package com.e.jia.news.view;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -16,8 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -45,9 +39,10 @@ public class NewsDetailActivity extends BaseActivity {
     private SwipeRefreshLayout swipe;
     private WebView webView;
     private ImageView backdrop;
-    private CollapsingToolbarLayout collapsing_toolbar;
 
     private NewsBean.DataEntity data;
+
+    private boolean haveImg = true;
 
     private String url;
     private String title;
@@ -59,7 +54,22 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_news_detail);
+
+        url = getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
+        imgUrl = getIntent().getStringExtra("imgUrl");
+        shareUrl = getIntent().getStringExtra("shareUrl");
+        desc = getIntent().getStringExtra("desc");
+        groupId = getIntent().getStringExtra("groupId");
+        itemId = getIntent().getStringExtra("itemId");
+
+        if (TextUtils.isEmpty(imgUrl)) {
+            haveImg = false;
+            setContentView(R.layout.activity_news_detail_text);
+        } else {
+            haveImg = true;
+            setContentView(R.layout.activity_news_detail_img);
+        }
     }
 
     @Override
@@ -67,8 +77,8 @@ public class NewsDetailActivity extends BaseActivity {
         toolbar = findViewById(R.id.toolbar);
         swipe = findViewById(R.id.swipe);
         webView = findViewById(R.id.webView);
-        backdrop = findViewById(R.id.backdrop);
-        collapsing_toolbar = findViewById(R.id.collapsing_toolbar);
+        if (haveImg)
+            backdrop = findViewById(R.id.backdrop);
 
         swipe.setColorSchemeResources(R.color.colorPrimary);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -87,7 +97,10 @@ public class NewsDetailActivity extends BaseActivity {
      * 初始化toolbar
      */
     private void initToolBar() {
+        toolbar.setTitle(title);
+
         setSupportActionBar(toolbar);
+
         //设置导航的图标
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         // 左侧图标点击
@@ -130,29 +143,15 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        url = getIntent().getStringExtra("url");
-        title = getIntent().getStringExtra("title");
-        imgUrl = getIntent().getStringExtra("imgUrl");
-        shareUrl = getIntent().getStringExtra("shareUrl");
-        desc = getIntent().getStringExtra("desc");
-        groupId = getIntent().getStringExtra("groupId");
-        itemId = getIntent().getStringExtra("itemId");
-
-        toolbar.setTitle(title);
-        collapsing_toolbar.setTitle(title);
 
         if (TextUtils.isEmpty(url)) return;
 
         webView.loadUrl(url);
 
-        if (TextUtils.isEmpty(imgUrl)) {
-            backdrop.setVisibility(View.GONE);
-        } else {
+        if (haveImg)
             Glide.with(this)
                     .load(imgUrl)
                     .into(backdrop);
-        }
-
     }
 
     @Override
