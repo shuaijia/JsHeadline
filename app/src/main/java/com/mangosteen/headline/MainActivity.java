@@ -107,6 +107,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                 }
                 return true;
             }
+
         });
     }
 
