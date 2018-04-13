@@ -3,7 +3,7 @@ package com.jia.libnet;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
-
+import com.jia.libnet.bean.video.MultiNewsArticleBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -31,4 +31,9 @@ public interface BaseService {
     Observable<PhotoArticleBean> getPhotoArticle(
             @Query("category") String category,
             @Query("max_behot_time") String time);
+
+    @GET("http://lf.snssdk.com/api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
+    Observable<MultiNewsArticleBean> getVideoArticle(
+            @Query("category") String category,
+            @Query("max_behot_time") String maxBehotTime);
 }

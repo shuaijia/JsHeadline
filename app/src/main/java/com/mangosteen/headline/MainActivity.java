@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.e.jia.news.view.NewsFragment;
 import com.e.jia.picture.view.PictureFragment;
-import com.e.jia.video.VideoFragment;
+import com.e.jia.video.view.VideoFragment;
 import com.elbbbird.android.socialsdk.SocialSDK;
 import com.elbbbird.android.socialsdk.model.SocialShareScene;
 import com.elbbbird.android.socialsdk.otto.ShareBusEvent;

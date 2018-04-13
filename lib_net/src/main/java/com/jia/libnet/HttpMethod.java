@@ -6,6 +6,8 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
+import com.jia.libnet.bean.video.MultiNewsArticleBean;
+import com.jia.libnet.bean.video.VideoArticleBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -199,8 +201,21 @@ public class HttpMethod {
      * @param time
      * @param subscriber
      */
-    public void getPhotoArticleLisr(String category, String time, Subscriber<PhotoArticleBean> subscriber) {
+    public void getPhotoArticleList(String category, String time, Subscriber<PhotoArticleBean> subscriber) {
         service.getPhotoArticle(category, time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取 视频 文章 列表
+     * @param category
+     * @param time
+     * @param subscriber
+     */
+    public void getVideoArticleList(String category, String time, Subscriber<MultiNewsArticleBean> subscriber) {
+        service.getVideoArticle(category, time)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

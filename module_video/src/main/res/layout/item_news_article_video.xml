@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
-    android:background="@color/viewBackground"
+    android:background="@color/white"
     app:cardElevation="1dp">
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.jia.libui.CircularImage
+            <ImageView
                 android:id="@+id/iv_media"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
@@ -88,11 +88,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@color/viewBackground"
+                    android:src="@color/white"
                     tools:ignore="ContentDescription"/>
 
                 <TextView
-                    android:id="@+id/tv_video_time"
+                    android:id="@+id/tv_video_dur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -101,10 +101,9 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:background="@color/textColorPrimary"
+                    android:background="#616161"
                     android:padding="2dp"
-                    android:textColor="@color/White"
-                    tools:text="10:34"/>
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
 
