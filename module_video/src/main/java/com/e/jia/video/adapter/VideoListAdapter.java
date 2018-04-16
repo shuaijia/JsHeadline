@@ -38,7 +38,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
 
     @Override
     public VideoListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_news_article_video, parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
         return new VideoListViewHolder(v);
     }
 
@@ -48,17 +48,17 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
                 .load(list.get(position).getMedia_info().getAvatar_url())
                 .into(holder.iv_media);
 
-        StringBuffer sb=new StringBuffer();
-        sb.append(list.get(position).getMedia_name()+" ");
-        sb.append(list.get(position).getComment_count()+"条评论 ");
+        StringBuffer sb = new StringBuffer();
+        sb.append(list.get(position).getMedia_name() + " ");
+        sb.append(list.get(position).getComment_count() + "条评论 ");
         holder.tv_extra.setText(sb);
 
-        holder.tv_title.setText(list.get(position).getTitle()+"");
+        holder.tv_title.setText(list.get(position).getTitle() + "");
 
-//        holder.tv_video_dur.setText(list.get(position).getVideo_duration());
+//        holder.tv_dur.setText(list.get(position).getVideo_duration());
 
         Glide.with(context)
-                .load(list.get(position).getVideo_detail_info().getDetail_video_large_image().getUrl()+"")
+                .load(list.get(position).getVideo_detail_info().getDetail_video_large_image().getUrl() + "")
                 .into(holder.iv_video_image);
     }
 
@@ -74,7 +74,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
         ImageView iv_dots;
         TextView tv_title;
         ImageView iv_video_image;
-        TextView tv_video_dur;
+        TextView tv_dur;
 
         public VideoListViewHolder(View itemView) {
             super(itemView);
@@ -84,7 +84,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
             iv_dots = itemView.findViewById(R.id.iv_dots);
             tv_title = itemView.findViewById(R.id.tv_title);
             iv_video_image = itemView.findViewById(R.id.iv_video_image);
-//            tv_video_dur = itemView.findViewById(R.id.tv_video_dur);
+            tv_dur = itemView.findViewById(R.id.tv_dur);
         }
     }
 }
