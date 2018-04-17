@@ -83,7 +83,6 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
 
     @Override
     public void onNoData() {
-        tv_no_data.setVisibility(View.VISIBLE);
         refresh_layout.setRefreshing(false);
     }
 
