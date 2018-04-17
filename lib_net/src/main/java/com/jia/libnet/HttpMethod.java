@@ -6,6 +6,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
+import com.jia.libnet.bean.photo.PhotoCommentBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
 import com.jia.libnet.bean.video.VideoArticleBean;
 
@@ -197,6 +198,7 @@ public class HttpMethod {
 
     /**
      * 获取 图片 文章 列表
+     *
      * @param category
      * @param time
      * @param subscriber
@@ -210,6 +212,7 @@ public class HttpMethod {
 
     /**
      * 获取 视频 文章 列表
+     *
      * @param category
      * @param time
      * @param subscriber
@@ -219,5 +222,20 @@ public class HttpMethod {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+    }
+
+    /**
+     * 获取 图片 评论数据
+     *
+     * @param groupId
+     * @param offset
+     * @param subscriber
+     */
+    public void getPhotoCommentList(String groupId, String offset, Subscriber<PhotoCommentBean> subscriber) {
+        service.getPhotoComment(groupId, offset)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
     }
 }

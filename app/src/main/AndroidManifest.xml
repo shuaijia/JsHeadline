@@ -42,7 +42,8 @@
         <activity android:name="com.e.jia.news.view.ChannelActivity"/>
         <activity android:name="com.e.jia.news.view.NewsDetailActivity"/>
         <activity android:name="com.e.jia.news.view.NewsCommentActivity"/>
-        <activity android:name="com.e.jia.picture.view.PhotoContentActivity"/>
+        <activity android:name="com.e.jia.picture.view.PhotoDetailActivity"/>
+        <activity android:name="com.e.jia.picture.view.PhotoCommentActivity"/>
 
         <activity
             android:name=".wxapi.WXEntryActivity"

@@ -105,7 +105,7 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
     @Override
     public void onClick(PhotoArticleBean.DataBean data) {
 
-        Intent intent = new Intent(getActivity(), PhotoContentActivity.class);
+        Intent intent = new Intent(getActivity(), PhotoDetailActivity.class);
         intent.putExtra("url", data.getSource_url());
         intent.putExtra("title", data.getSource());
         intent.putExtra("shareUrl", data.getSource_url());

@@ -3,6 +3,7 @@ package com.jia.libnet;
 import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
+import com.jia.libnet.bean.photo.PhotoCommentBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
 
 import retrofit2.http.GET;
@@ -36,4 +37,19 @@ public interface BaseService {
     Observable<MultiNewsArticleBean> getVideoArticle(
             @Query("category") String category,
             @Query("max_behot_time") String maxBehotTime);
+
+    /**
+     * 获取新闻评论
+     * 按热度排序
+     * http://is.snssdk.com/article/v53/tab_comments/?group_id=6314103921648926977&offset=0&tab_index=0
+     * 按时间排序
+     * http://is.snssdk.com/article/v53/tab_comments/?group_id=6314103921648926977&offset=0&tab_index=1
+     *
+     * @param groupId 新闻ID
+     * @param offset  偏移量
+     */
+    @GET("http://is.snssdk.com/article/v53/tab_comments/")
+    Observable<PhotoCommentBean> getPhotoComment(
+            @Query("group_id") String groupId,
+            @Query("offset") String offset);
 }

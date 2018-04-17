@@ -33,7 +33,7 @@ import org.greenrobot.eventbus.Subscribe;
  * 人之所以能，是相信能。
  */
 
-public class PhotoContentActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class PhotoDetailActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private Toolbar toolbar;
     private WebView webView;
@@ -149,10 +149,10 @@ public class PhotoContentActivity extends BaseActivity implements SwipeRefreshLa
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_comment) {
 
-//            Intent intent = new Intent(this, NewsCommentActivity.class);
-//            intent.putExtra("groupId", groupId);
-//            intent.putExtra("itemId", itemId);
-//            startActivity(intent);
+            Intent intent = new Intent(this, PhotoCommentActivity.class);
+            intent.putExtra("groupId", groupId);
+            intent.putExtra("itemId", itemId);
+            startActivity(intent);
 
         } else if (item.getItemId() == R.id.action_personal) {
             Snackbar.make(toolbar, "个人中心", Snackbar.LENGTH_LONG).show();
