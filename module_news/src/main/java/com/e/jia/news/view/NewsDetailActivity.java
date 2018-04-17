@@ -1,37 +1,33 @@
 package com.e.jia.news.view;
 
-import android.graphics.Bitmap;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.e.jia.news.R;
+import com.elbbbird.android.socialsdk.SocialSDK;
+import com.elbbbird.android.socialsdk.model.SocialShareScene;
+import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
-import com.jia.base.annotation.BindEventBus;
 import com.jia.libnet.bean.news.NewsBean;
 
 import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 
 /**
  * 新闻详情界面
@@ -46,13 +42,34 @@ public class NewsDetailActivity extends BaseActivity {
 
     private NewsBean.DataEntity data;
 
+    private boolean haveImg = true;
+
     private String url;
     private String title;
     private String imgUrl;
+    private String shareUrl;
+    private String desc;
+    private String groupId;
+    private String itemId;
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_news_detail);
+
+        url = getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
+        imgUrl = getIntent().getStringExtra("imgUrl");
+        shareUrl = getIntent().getStringExtra("shareUrl");
+        desc = getIntent().getStringExtra("desc");
+        groupId = getIntent().getStringExtra("groupId");
+        itemId = getIntent().getStringExtra("itemId");
+
+        if (TextUtils.isEmpty(imgUrl)) {
+            haveImg = false;
+            setContentView(R.layout.activity_news_detail_text);
+        } else {
+            haveImg = true;
+            setContentView(R.layout.activity_news_detail_img);
+        }
     }
 
     @Override
@@ -60,7 +77,10 @@ public class NewsDetailActivity extends BaseActivity {
         toolbar = findViewById(R.id.toolbar);
         swipe = findViewById(R.id.swipe);
         webView = findViewById(R.id.webView);
-        backdrop = findViewById(R.id.backdrop);
+        if (haveImg)
+            backdrop = findViewById(R.id.backdrop);
+
+        swipe.setColorSchemeResources(R.color.colorPrimary);
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -77,7 +97,10 @@ public class NewsDetailActivity extends BaseActivity {
      * 初始化toolbar
      */
     private void initToolBar() {
+        toolbar.setTitle(title);
+
         setSupportActionBar(toolbar);
+
         //设置导航的图标
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
         // 左侧图标点击
@@ -110,7 +133,7 @@ public class NewsDetailActivity extends BaseActivity {
                 }
             }
         });
-        webView.setWebViewClient(new DetailWebViewClient());
+        webView.setWebViewClient(new WebViewClient());
     }
 
     @Override
@@ -120,44 +143,65 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        url = getIntent().getStringExtra("url");
-        title = getIntent().getStringExtra("title");
-        imgUrl = getIntent().getStringExtra("imgUrl");
-        toolbar.setTitle(title);
+
         if (TextUtils.isEmpty(url)) return;
 
         webView.loadUrl(url);
 
-        if(TextUtils.isEmpty(imgUrl)){
-            backdrop.setVisibility(View.GONE);
-        }else{
+        if (haveImg)
             Glide.with(this)
                     .load(imgUrl)
                     .into(backdrop);
-        }
     }
 
-    class DetailWebViewClient extends WebViewClient {
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            super.onPageStarted(view, url, favicon);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_toolbar_news, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_comment) {
+
+            Intent intent = new Intent(this, NewsCommentActivity.class);
+            intent.putExtra("groupId", groupId);
+            intent.putExtra("itemId", itemId);
+            startActivity(intent);
+
+        } else if (item.getItemId() == R.id.action_personal) {
+            Snackbar.make(toolbar, "个人中心", Snackbar.LENGTH_LONG).show();
+        } else if (item.getItemId() == R.id.action_share) {
+
+            SocialSDK.shareTo(this, new SocialShareScene(2, "Headline", title, desc, url, shareUrl));
+
+        } else if (item.getItemId() == R.id.action_chrome) {
+
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+
         }
 
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-        }
+        return false;
+    }
 
-        @Override
-        public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-            super.onReceivedError(view, request, error);
-            Log.e(TAG, "onReceivedError: " + error.toString());
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Log.e(TAG, "shouldOverrideUrlLoading: " + url);
-            return super.shouldOverrideUrlLoading(view, url);
+    @Subscribe
+    public void onShareResult(ShareBusEvent event) {
+        switch (event.getType()) {
+            case ShareBusEvent.TYPE_SUCCESS:
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_SUCCESS " + event.getId());
+                Toast.makeText(this, "分享成功", Toast.LENGTH_SHORT).show();
+                break;
+            case ShareBusEvent.TYPE_FAILURE:
+                Exception e = event.getException();
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_FAILURE " + e.toString());
+                Toast.makeText(this, "分享失败", Toast.LENGTH_SHORT).show();
+                break;
+            case ShareBusEvent.TYPE_CANCEL:
+                Log.i(TAG, "onShareResult#ShareBusEvent.TYPE_CANCEL");
+                Toast.makeText(this, "分享取消", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }

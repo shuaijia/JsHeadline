@@ -45,16 +45,19 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
 
     @Override
     public void bindView(NewsBean.DataEntity data) {
-        tv_title.setText(data.getTitle() + "");
+        tv_title.setText(data.getTitle()+"");
         tv_abstract.setText(data.getAbstractX() + "");
 
         Glide.with(itemView.getContext())
-                .load(data.getImage_list().get(0).getUrl()+"")
+                .load(data.getImage_list().get(0).getUrl() + "")
                 .into(iv_image);
 
         StringBuffer extra = new StringBuffer();
-        extra.append(data.getMedia_name() + " ");
-        if (data.getComments_count() == 0) {
+        if (TextUtils.isEmpty(data.getMedia_name()) || data.getMedia_name().equals("null"))
+            extra.append("推广 ");
+        else
+            extra.append(data.getMedia_name() + " ");
+        if (data.getComment_count() == 0) {
             extra.append("暂无评论 ");
         } else {
             extra.append(data.getComments_count() + "条评论 ");
@@ -83,7 +86,7 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
                         .setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, itemView.getContext().getResources().getDisplayMetrics()))
                         .setAnimation(R.style.anim_pop)
                         .build()
-                        .showAsLocation(iv_dots, Gravity.LEFT| Gravity.TOP, 100, 0);
+                        .showAsLocation(iv_dots, Gravity.LEFT | Gravity.TOP, 100, 0);
             }
         });
     }

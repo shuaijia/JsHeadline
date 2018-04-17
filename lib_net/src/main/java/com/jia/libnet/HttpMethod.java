@@ -4,6 +4,11 @@ import android.util.Log;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libnet.bean.news.NewsCommentBean;
+import com.jia.libnet.bean.photo.PhotoArticleBean;
+import com.jia.libnet.bean.photo.PhotoCommentBean;
+import com.jia.libnet.bean.video.MultiNewsArticleBean;
+import com.jia.libnet.bean.video.VideoArticleBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +23,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Description:
@@ -40,7 +47,7 @@ public class HttpMethod {
         @Override
         public void log(String message) {
             //打印retrofit日志
-            Log.i("RetrofitLog","retrofitBack = "+message);
+            Log.i("RetrofitLog", "retrofitBack = " + message);
         }
     });
 
@@ -164,11 +171,71 @@ public class HttpMethod {
         }
     }
 
-    public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber){
+    public void getNewsByTag(String category, String as, Subscriber<NewsBean> subscriber) {
 //        service.getNewsByTag("2", category,as)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(subscriber);
+
+    }
+
+    /**
+     * 获取新闻评价列表
+     *
+     * @param groupId    头条号
+     * @param itemId     文章号
+     * @param offset     偏移量
+     * @param count      数量
+     * @param subscriber
+     */
+    public void getNewsCommentList(String groupId, String itemId, String offset, String count, Subscriber<NewsCommentBean> subscriber) {
+        service.getNewsComment(groupId, itemId, offset, count)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
+
+    /**
+     * 获取 图片 文章 列表
+     *
+     * @param category
+     * @param time
+     * @param subscriber
+     */
+    public void getPhotoArticleList(String category, String time, Subscriber<PhotoArticleBean> subscriber) {
+        service.getPhotoArticle(category, time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取 视频 文章 列表
+     *
+     * @param category
+     * @param time
+     * @param subscriber
+     */
+    public void getVideoArticleList(String category, String time, Subscriber<MultiNewsArticleBean> subscriber) {
+        service.getVideoArticle(category, time)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取 图片 评论数据
+     *
+     * @param groupId
+     * @param offset
+     * @param subscriber
+     */
+    public void getPhotoCommentList(String groupId, String offset, Subscriber<PhotoCommentBean> subscriber) {
+        service.getPhotoComment(groupId, offset)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
 
     }
 }

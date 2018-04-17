@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.blankj.utilcode.util.Utils;
+import com.elbbbird.android.socialsdk.SocialSDK;
 import com.jia.base.annotation.Action;
 
 import java.io.IOException;
@@ -46,6 +47,8 @@ public class BaseApplication extends Application {
 
         getAllActivities();
 
+        SocialSDK.setDebugMode(true);
+        SocialSDK.init("wechat_app_id", "4214463192", "1106751527");
 
         //初始化开源工具类
         Utils.init(this);
