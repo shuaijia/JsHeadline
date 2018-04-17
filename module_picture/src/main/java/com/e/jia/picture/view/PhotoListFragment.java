@@ -1,5 +1,6 @@
 package com.e.jia.picture.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 
 public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListView, PhotoListPresenter>
-        implements PhotoListContract.PhotoListView, SwipeRefreshLayout.OnRefreshListener {
+        implements PhotoListContract.PhotoListView, SwipeRefreshLayout.OnRefreshListener, PhotoListAdapter.OnItemClickListener {
 
     private SwipeRefreshLayout refresh_layout;
     private RecyclerView recycler_view;
@@ -33,7 +34,7 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
 
     private PhotoListAdapter adapter;
 
-    private String category="组图";
+    private String category = "组图";
 
     @Override
     protected View initFragmentView(LayoutInflater inflater) {
@@ -53,7 +54,7 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
         refresh_layout.setRefreshing(true);
 
         adapter = new PhotoListAdapter(getContext());
-
+        adapter.setOnItemClickListener(this);
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
     }
@@ -89,6 +90,8 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
     @Override
     public void onFail(String info) {
         ToastUtils.showLong(info + "");
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText(info+"");
         refresh_layout.setRefreshing(false);
     }
 
@@ -98,5 +101,19 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public void onClick(PhotoArticleBean.DataBean data) {
+
+        Intent intent = new Intent(getActivity(), PhotoContentActivity.class);
+        intent.putExtra("url", data.getSource_url());
+        intent.putExtra("title", data.getSource());
+        intent.putExtra("shareUrl", data.getSource_url());
+        intent.putExtra("desc", data.getTitle());
+        intent.putExtra("groupId", data.getGroup_id());
+        intent.putExtra("itemId", data.getGroup_id());
+        getActivity().startActivity(intent);
+
     }
 }
