@@ -1,7 +1,7 @@
 # Headline
 仿头条app，MVP模式，Retrofit+RxJava+OkHttp+Glide框架等，持续开发中。。。
 
-其中数据来自![头条Api](https://github.com/iMeiji/Toutiao/wiki/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1Api%E5%88%86%E6%9E%90)
+其中数据来自[头条Api](https://github.com/iMeiji/Toutiao/wiki/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1Api%E5%88%86%E6%9E%90)
 
 ### 截图
 
