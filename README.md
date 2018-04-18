@@ -20,6 +20,7 @@
 - 模块化开发，将整体项目分为底层net库、ui库和utils库，base库、功能模块module，主app；
 - 网络框架使用Retrofit+RxJava+OkHttp+Glide进行封装；
 - 对OkHttp请求头进行处理，添加cookie和保存cookie；
+- 对ExoPlayer进行封装，做视频播放器；
 - 对EventBus进行封装，使用注解来注册，进行消息发送和处理；
 - BaseActivity与BaseFragment封装，配合MVP模式框架；
 - 使用自定义注解实现Router方案；
