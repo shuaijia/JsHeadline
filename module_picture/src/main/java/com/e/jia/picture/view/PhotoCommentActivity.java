@@ -85,7 +85,6 @@ public class PhotoCommentActivity extends BaseActivity<PhotoCommentContract.Phot
             }
         });
     }
-
     @Override
     protected PhotoCommentPresenter createPresenter() {
         return new PhotoCommentPresenter(null);
