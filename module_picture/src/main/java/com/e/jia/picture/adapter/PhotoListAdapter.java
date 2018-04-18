@@ -36,7 +36,6 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     public void setData(List<PhotoArticleBean.DataBean> list) {
         this.list.clear();
         this.list = list;
-        notifyDataSetChanged();
     }
 
     @Override

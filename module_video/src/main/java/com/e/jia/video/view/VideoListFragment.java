@@ -2,9 +2,9 @@ package com.e.jia.video.view;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -12,10 +12,12 @@ import android.widget.TextView;
 import com.e.jia.video.R;
 import com.e.jia.video.adapter.VideoListAdapter;
 import com.e.jia.video.contract.VideoListContract;
+import com.e.jia.video.diffutil.VideoDiffCallback;
 import com.e.jia.video.presenter.VideoListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.video.VideoArticleBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +35,8 @@ public class VideoListFragment extends BaseFragment<VideoListContract.VideoListV
 
     private VideoListAdapter adapter;
 
+    private List<VideoArticleBean> list = new ArrayList<>();
+
     private String category;
 
     @Override
@@ -47,16 +51,21 @@ public class VideoListFragment extends BaseFragment<VideoListContract.VideoListV
         refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         recycler_view = view.findViewById(R.id.recycler_view);
         tv_no_data = view.findViewById(R.id.tv_no_data);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("加载中...");
 
         refresh_layout.setRefreshing(true);
         refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mPresenter.getVideoList(category);
+                tv_no_data.setVisibility(View.VISIBLE);
+                tv_no_data.setText("加载中...");
             }
         });
 
-        adapter=new VideoListAdapter(getContext());
+        adapter = new VideoListAdapter(getContext());
+        adapter.setData(list);
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
     }
@@ -81,20 +90,29 @@ public class VideoListFragment extends BaseFragment<VideoListContract.VideoListV
 
     @Override
     public void onSuccess(List<VideoArticleBean> list) {
-        Log.e(TAG, "onSuccess: " + list.toString());
+        tv_no_data.setVisibility(View.GONE);
         refresh_layout.setRefreshing(false);
         adapter.setData(list);
+
+        // 使用DiffUtil进行刷新
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new VideoDiffCallback(this.list, list));
+        diffResult.dispatchUpdatesTo(adapter);
+        this.list.clear();
+        this.list.addAll(list);
+        adapter.setData(this.list);
     }
 
     @Override
     public void onNoData() {
-        Log.e(TAG, "onNoData: ");
         refresh_layout.setRefreshing(false);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("暂无数据");
     }
 
     @Override
     public void onFail(String info) {
-        Log.e(TAG, "onFail: " + info);
         refresh_layout.setRefreshing(false);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("" + info);
     }
 }

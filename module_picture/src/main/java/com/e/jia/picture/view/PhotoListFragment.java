@@ -3,6 +3,7 @@ package com.e.jia.picture.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,10 +14,12 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.e.jia.picture.R;
 import com.e.jia.picture.adapter.PhotoListAdapter;
 import com.e.jia.picture.contract.PhotoListContract;
+import com.e.jia.picture.diffutil.PhotoDiffCallback;
 import com.e.jia.picture.presenter.PhotoListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +37,8 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
 
     private PhotoListAdapter adapter;
 
+    private List<PhotoArticleBean.DataBean> list = new ArrayList<>();
+
     private String category = "组图";
 
     @Override
@@ -47,13 +52,15 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
         refresh_layout = view.findViewById(R.id.refresh_layout);
         recycler_view = view.findViewById(R.id.recycler_view);
         tv_no_data = view.findViewById(R.id.tv_no_data);
-        tv_no_data.setVisibility(View.GONE);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("加载中...");
 
         refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         refresh_layout.setOnRefreshListener(this);
         refresh_layout.setRefreshing(true);
 
         adapter = new PhotoListAdapter(getContext());
+        adapter.setData(list);
         adapter.setOnItemClickListener(this);
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
@@ -72,11 +79,19 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
     @Override
     public void onRefresh() {
         mPresenter.getPhotoList(category);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("加载中...");
     }
 
     @Override
     public void onSuccess(List<PhotoArticleBean.DataBean> list) {
-        adapter.setData(list);
+        // 使用DiffUtil进行刷新
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new PhotoDiffCallback(this.list, list));
+        diffResult.dispatchUpdatesTo(adapter);
+        this.list.clear();
+        this.list.addAll(list);
+        adapter.setData(this.list);
+
         tv_no_data.setVisibility(View.GONE);
         refresh_layout.setRefreshing(false);
     }
@@ -84,13 +99,15 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
     @Override
     public void onNoData() {
         refresh_layout.setRefreshing(false);
+        tv_no_data.setVisibility(View.VISIBLE);
+        tv_no_data.setText("暂无数据");
     }
 
     @Override
     public void onFail(String info) {
         ToastUtils.showLong(info + "");
         tv_no_data.setVisibility(View.VISIBLE);
-        tv_no_data.setText(info+"");
+        tv_no_data.setText(info + "");
         refresh_layout.setRefreshing(false);
     }
 
