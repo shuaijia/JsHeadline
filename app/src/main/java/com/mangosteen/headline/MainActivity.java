@@ -62,7 +62,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     protected void initActivityView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
     }
 
     @Override

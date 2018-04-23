@@ -38,13 +38,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.e.jia.news.view.ChannelActivity"/>
-        <activity android:name="com.e.jia.news.view.NewsDetailActivity"/>
-        <activity android:name="com.e.jia.news.view.NewsCommentActivity"/>
-        <activity android:name="com.e.jia.picture.view.PhotoDetailActivity"/>
-        <activity android:name="com.e.jia.picture.view.PhotoCommentActivity"/>
-
+        <activity android:name="com.e.jia.news.view.ChannelActivity" />
+        <activity android:name="com.e.jia.news.view.NewsDetailActivity" />
+        <activity android:name="com.e.jia.news.view.NewsCommentActivity" />
+        <activity android:name="com.e.jia.picture.view.PhotoDetailActivity" />
+        <activity android:name="com.e.jia.picture.view.PhotoCommentActivity" />
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -64,6 +62,7 @@
                 <data android:scheme="tencent1106751527" />
             </intent-filter>
         </activity>
+        <activity android:name=".Main2Activity"></activity>
     </application>
 
 </manifest>
