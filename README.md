@@ -5,13 +5,7 @@
 
 ### 截图
 
-<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/a.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/b.png"/>
-
-<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/c.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/d.png"/>
-
-<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/e.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/f.png"/>
-
-<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/g.png"/>
+<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/a.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/b.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/c.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/d.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/e.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/f.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/g.png"/>
 
 ### point
 
@@ -26,5 +20,6 @@
 - 使用自定义注解实现Router方案；
 - 使用 7.0 新工具 DiffUtil , 不再无脑 notifyDataSetChanged
 - 使用 ItemTouchHelper 实现今日头条的频道排序、频道移动
+- 使用AndroidChangeSkin实现应用内换肤
 
 
