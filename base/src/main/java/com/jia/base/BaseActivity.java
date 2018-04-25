@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.EventBusUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.zhy.changeskin.SkinManager;
 
 /**
  * Description: Activity 基类
@@ -23,7 +24,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends RxAppC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        SkinManager.getInstance().register(this);
         // 若使用BindEventBus注解，则绑定EventBus
         if(this.getClass().isAnnotationPresent(BindEventBus.class)){
             EventBusUtils.register(this);
@@ -70,6 +71,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends RxAppC
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        SkinManager.getInstance().unregister(this);
         // 若使用BindEventBus注解，则解绑定EventBus
         if(this.getClass().isAnnotationPresent(BindEventBus.class)){
             EventBusUtils.unregister(this);

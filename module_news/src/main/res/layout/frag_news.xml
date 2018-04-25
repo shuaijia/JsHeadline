@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="48dp"
         android:background="@color/colorPrimary"
+        android:tag="skin:tab_bar_color:background"
         app:tabIndicatorColor="@color/white"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
@@ -28,6 +29,7 @@
         android:layout_alignParentRight="true"
         android:background="@color/colorPrimary"
         android:padding="11dp"
+        android:tag="skin:tab_bar_color:background"
         android:src="@drawable/ic_add" />
 
 </RelativeLayout>

@@ -27,6 +27,7 @@ import com.jia.base.BasePresenter;
 import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
+import com.zhy.changeskin.SkinManager;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -95,7 +96,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                         Snackbar.make(navigation, "个人", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_camera:
-                        Snackbar.make(navigation, "切换主题", Snackbar.LENGTH_SHORT).show();
+                        SkinManager.getInstance().changeSkin("red");
                         break;
                     case R.id.nav_share:
                         Snackbar.make(navigation, "设置", Snackbar.LENGTH_SHORT).show();

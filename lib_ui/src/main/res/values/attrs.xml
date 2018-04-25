@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- changeskin 默认 -->
+    <color name="tool_bar_color_blue">#3F51B5</color>
+    <color name="tab_bar_color_blue">#3F51B5</color>
+
+    <!--应用内换肤资源-->
+    <color name="tool_bar_color_red">#ff2d6f</color>
+    <color name="tab_bar_color_red">#ff2d6f</color>
+
+    <color name="tool_bar_color_yellow">#fbc02d</color>
+    <color name="tab_bar_color_yellow">#fbc02d</color>
+
+    <color name="tool_bar_color_green">#12c700</color>
+    <color name="tab_bar_color_green">#12c700</color>
+
+</resources>

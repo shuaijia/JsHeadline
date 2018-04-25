@@ -50,4 +50,6 @@ dependencies {
     compile 'com.ocnyang:contourview:1.0.0'
     // tabTargetView
     compile 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+    // 换肤
+    compile 'com.zhy:changeskin:4.0.2'
 }
