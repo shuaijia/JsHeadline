@@ -1,5 +1,6 @@
 package com.e.jia.video.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.util.DiffUtil;
@@ -16,6 +17,7 @@ import com.e.jia.video.diffutil.VideoDiffCallback;
 import com.e.jia.video.presenter.VideoListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.video.VideoArticleBean;
+import com.jia.libui.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +75,13 @@ public class VideoListFragment extends BaseFragment<VideoListContract.VideoListV
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
         mPresenter.getVideoList(category);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        refresh_layout.setColorSchemeColors(Color.parseColor(theme));
     }
 
     @Override

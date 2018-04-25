@@ -1,6 +1,7 @@
 package com.e.jia.news.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,7 @@ import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libui.utils.SPUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -80,7 +82,8 @@ public class NewsDetailActivity extends BaseActivity {
         if (haveImg)
             backdrop = findViewById(R.id.backdrop);
 
-        swipe.setColorSchemeResources(R.color.colorPrimary);
+        String theme=SPUtils.getData(this,"theme","#3F51B5");
+        swipe.setColorSchemeColors(Color.parseColor(theme));
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

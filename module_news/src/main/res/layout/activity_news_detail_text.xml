@@ -19,6 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_collapseMode="pin"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:tag="skin:tool_bar_color:background"
             app:title="" />
     </android.support.design.widget.AppBarLayout>
 

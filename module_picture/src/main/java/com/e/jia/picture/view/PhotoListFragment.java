@@ -1,6 +1,7 @@
 package com.e.jia.picture.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.util.DiffUtil;
@@ -18,6 +19,7 @@ import com.e.jia.picture.diffutil.PhotoDiffCallback;
 import com.e.jia.picture.presenter.PhotoListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
+import com.jia.libui.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +71,13 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
         mPresenter.getPhotoList(category);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        refresh_layout.setColorSchemeColors(Color.parseColor(theme));
     }
 
     @Override

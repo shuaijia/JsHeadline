@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,7 +28,7 @@ import com.jia.base.BasePresenter;
 import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
-import com.zhy.changeskin.SkinManager;
+import com.jia.libui.theme.ThemeDialog;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -96,7 +97,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                         Snackbar.make(navigation, "个人", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_camera:
-                        SkinManager.getInstance().changeSkin("red");
+
+                        ThemeDialog dialog=new ThemeDialog(MainActivity.this);
+                        dialog.show();
+
                         break;
                     case R.id.nav_share:
                         Snackbar.make(navigation, "设置", Snackbar.LENGTH_SHORT).show();

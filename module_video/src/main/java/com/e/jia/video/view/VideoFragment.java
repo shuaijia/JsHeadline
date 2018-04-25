@@ -1,5 +1,6 @@
 package com.e.jia.video.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -13,6 +14,7 @@ import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
 import com.jia.libnet.HttpMethod;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
+import com.jia.libui.utils.SPUtils;
 import com.jia.libutils.TimeUtil;
 
 import java.util.ArrayList;
@@ -41,6 +43,9 @@ public class VideoFragment extends BaseFragment {
     protected void initFragmentChildView(View view) {
         mTabLayout = view.findViewById(R.id.tl_video_titles);
         vp_video_content = view.findViewById(R.id.vp_video_content);
+
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        mTabLayout.setBackgroundColor(Color.parseColor(theme));
     }
 
     @Override
@@ -49,9 +54,6 @@ public class VideoFragment extends BaseFragment {
         vp_video_content.setAdapter(adapter);
         vp_video_content.setOffscreenPageLimit(10);
         mTabLayout.setupWithViewPager(vp_video_content);
-
-
-
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.e.jia.news.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.util.DiffUtil;
@@ -19,6 +20,7 @@ import com.e.jia.news.diffutil.NewsDiffCallback;
 import com.e.jia.news.presenter.NewsListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libui.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,6 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     @Override
     protected void initFragmentChildView(View view) {
         refresh_layout = view.findViewById(R.id.refresh_layout);
-        refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         recycler_view = view.findViewById(R.id.recycler_view);
         tv_no_data = view.findViewById(R.id.tv_no_data);
 
@@ -93,6 +94,13 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     @Override
     protected void initFragmentData(Bundle savedInstanceState) {
 //        refresh_layout.setRefreshing(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        refresh_layout.setColorSchemeColors(Color.parseColor(theme));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.e.jia.picture.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,6 +12,7 @@ import com.e.jia.picture.R;
 import com.e.jia.picture.adapter.PhotoFragmentPagerAdapter;
 import com.jia.base.BaseFragment;
 import com.jia.base.BasePresenter;
+import com.jia.libui.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,9 @@ public class PictureFragment extends BaseFragment {
     protected void initFragmentChildView(View view) {
         mTabLayout=view.findViewById(R.id.tl_img_titles);
         vp_img_content=view.findViewById(R.id.vp_img_content);
+
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        mTabLayout.setBackgroundColor(Color.parseColor(theme));
     }
 
     @Override
