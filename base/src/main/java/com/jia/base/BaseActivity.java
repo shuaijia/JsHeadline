@@ -7,16 +7,21 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.jaeger.library.StatusBarUtil;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.EventBusUtils;
+import com.jia.libui.utils.SPUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.zhy.changeskin.SkinManager;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Description: Activity 基类
  * Created by jia on 2018/1/19.
  * 人之所以能，是相信能
  */
+@BindEventBus
 public abstract class BaseActivity<V, T extends BasePresenter<V>> extends RxAppCompatActivity {
 
     public String TAG = getClass().getSimpleName() + "";
@@ -37,6 +42,8 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends RxAppC
         mContext = BaseActivity.this;
 
         initActivityView(savedInstanceState);
+
+        StatusBarUtil.setColor(this, Color.parseColor(SPUtils.getData(this, "theme", "#3F51B5")));
 
         //创建presenter
         mPresenter = createPresenter();
@@ -95,5 +102,11 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends RxAppC
         if (null != mPresenter) {
             mPresenter.detachView();
         }
+    }
+
+    @Subscribe()
+    public void onHandlerChangeTheme(Object obj) {
+        String theme = SPUtils.getData(this, "theme", "#3F51B5");
+        StatusBarUtil.setColor(this, Color.parseColor(theme));
     }
 }

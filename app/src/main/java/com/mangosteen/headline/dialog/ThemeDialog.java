@@ -1,4 +1,4 @@
-package com.jia.libui.theme;
+package com.mangosteen.headline.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libui.CircularImage;
 import com.jia.libui.R;
+import com.jia.libui.theme.ThemeModel;
+import com.jia.libui.theme.ThemeUtils;
 import com.jia.libui.utils.SPUtils;
 import com.zhy.changeskin.SkinManager;
 
@@ -69,6 +72,8 @@ public class ThemeDialog extends Dialog implements View.OnClickListener {
             SPUtils.saveData(getContext(), "theme", themeColor);
             // 切换主题
             SkinManager.getInstance().changeSkin(theme);
+            // 发送消息 改变状态栏颜色
+            EventBusUtils.sendEvent(new Object());
             dismiss();
         }
     }
