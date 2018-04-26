@@ -31,18 +31,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.e.jia.news.view.ChannelActivity" />
-        <activity android:name="com.e.jia.news.view.NewsDetailActivity" />
-        <activity android:name="com.e.jia.news.view.NewsCommentActivity" />
-        <activity android:name="com.e.jia.picture.view.PhotoDetailActivity" />
-        <activity android:name="com.e.jia.picture.view.PhotoCommentActivity" />
+        <activity android:name="com.e.jia.news.view.ChannelActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.e.jia.news.view.NewsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.e.jia.news.view.NewsCommentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.e.jia.picture.view.PhotoDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.e.jia.picture.view.PhotoCommentActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

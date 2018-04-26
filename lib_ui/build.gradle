@@ -52,4 +52,6 @@ dependencies {
     compile 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
     // 换肤
     compile 'com.zhy:changeskin:4.0.2'
+    // 状态栏 工具
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
 }

@@ -92,9 +92,7 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     }
 
     @Override
-    protected void initFragmentData(Bundle savedInstanceState) {
-//        refresh_layout.setRefreshing(true);
-    }
+    protected void initFragmentData(Bundle savedInstanceState) {}
 
     @Override
     public void onResume() {
