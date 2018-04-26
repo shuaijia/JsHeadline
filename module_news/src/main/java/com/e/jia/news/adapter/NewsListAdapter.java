@@ -2,13 +2,11 @@ package com.e.jia.news.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.e.jia.news.R;
-import com.jia.base.eventbus.EventBusUtils;
 import com.jia.libnet.bean.news.NewsBean;
 
 import java.util.List;
@@ -35,7 +33,6 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
 
     public void setData(List<NewsBean.DataEntity> list) {
         this.list = list;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -61,7 +58,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(listener!=null) listener.onClick(list.get(position));
+                if (listener != null) listener.onClick(list.get(position));
             }
         });
     }
@@ -88,7 +85,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsBaseViewHolder> {
         this.listener = listener;
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onClick(NewsBean.DataEntity data);
     }
 }

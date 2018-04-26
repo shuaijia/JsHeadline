@@ -1,8 +1,10 @@
 package com.e.jia.news.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -14,9 +16,14 @@ import android.widget.Toast;
 import com.e.jia.news.R;
 import com.e.jia.news.adapter.NewsListAdapter;
 import com.e.jia.news.contract.NewsListContract;
+import com.e.jia.news.diffutil.NewsDiffCallback;
 import com.e.jia.news.presenter.NewsListPresenter;
 import com.jia.base.BaseFragment;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libui.utils.SPUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 列表界面
@@ -31,6 +38,8 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     private TextView tv_no_data;
     private NewsListAdapter adapter;
 
+    private List<NewsBean.DataEntity> list = new ArrayList<>();
+
     private String tag = "";
 
     @Override
@@ -42,10 +51,11 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     @Override
     protected void initFragmentChildView(View view) {
         refresh_layout = view.findViewById(R.id.refresh_layout);
-        refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         recycler_view = view.findViewById(R.id.recycler_view);
         tv_no_data = view.findViewById(R.id.tv_no_data);
+
         adapter = new NewsListAdapter(getActivity());
+        adapter.setData(list);
         recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler_view.setAdapter(adapter);
 
@@ -87,6 +97,13 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        refresh_layout.setColorSchemeColors(Color.parseColor(theme));
+    }
+
+    @Override
     protected NewsListPresenter createPresenter() {
 //        return new NewsListPresenter(this.<Long>bindUntilEvent(FragmentEvent.DESTROY));
         return new NewsListPresenter(null);
@@ -100,7 +117,12 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     public void onRefreshSuccess(NewsBean bean) {
         refresh_layout.setRefreshing(false);
 
-        adapter.setData(bean.getData());
+        // 使用DiffUtil进行刷新
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new NewsDiffCallback(list, bean.getData()));
+        diffResult.dispatchUpdatesTo(adapter);
+        list.clear();
+        list.addAll(bean.getData());
+        adapter.setData(list);
 
         tv_no_data.setVisibility(View.GONE);
     }

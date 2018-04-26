@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                 android:id="@+id/iv_media"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/tv_extra"
@@ -40,7 +39,7 @@
                 android:maxLength="30"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                tools:text="新闻源 - 2222条评论 - 1小时前"/>
+                tools:text="新闻源 - 2222条评论 - 1小时前" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -56,7 +55,7 @@
                     android:padding="4dp"
                     android:scaleType="center"
                     app:srcCompat="@drawable/ic_dots_horizontal_grey500_24dp"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -76,7 +75,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textStyle="bold"
-                tools:text="菲总统称中国将向菲提供武器 已指示军方前往接收"/>
+                tools:text="菲总统称中国将向菲提供武器 已指示军方前往接收" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -89,21 +88,20 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@color/white"
-                    tools:ignore="ContentDescription"/>
+                    tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/tv_video_dur"
+                    android:id="@+id/tv_dur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:background="#616161"
-                    android:padding="2dp"
-                    android:textColor="@color/white"/>
+                    android:layout_margin="5dp"
+                    android:background="@drawable/shape_video_dur"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="5:00"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 

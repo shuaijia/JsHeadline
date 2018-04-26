@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
+        android:tag="skin:tool_bar_color:background"
         app:title="频道设置"
         app:titleTextColor="#fff" />
 

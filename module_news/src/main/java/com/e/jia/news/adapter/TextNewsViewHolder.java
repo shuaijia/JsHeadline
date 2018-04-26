@@ -56,7 +56,7 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
 
     @Override
     public void bindView(final NewsBean.DataEntity data) {
-        tv_title.setText(data.getTitle()+"");
+        tv_title.setText(data.getTitle() + "");
         tv_abstract.setText(data.getAbstractX() + "");
         StringBuffer extra = new StringBuffer();
         if (TextUtils.isEmpty(data.getMedia_name()) || data.getMedia_name().equals("null"))
@@ -98,9 +98,9 @@ public class TextNewsViewHolder extends NewsBaseViewHolder {
         });
     }
 
-    /*
-  * 将时间戳转换为时间
-  */
+    /**
+     * 将时间戳转换为时间
+     */
     public static String stampToDate(String s) {
         String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");

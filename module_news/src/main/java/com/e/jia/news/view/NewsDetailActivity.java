@@ -1,8 +1,10 @@
 package com.e.jia.news.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -20,12 +22,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.e.jia.news.R;
+import com.e.jia.news.ui.AppBarStateChangeListener;
 import com.elbbbird.android.socialsdk.SocialSDK;
 import com.elbbbird.android.socialsdk.model.SocialShareScene;
 import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
 import com.jia.base.BaseActivity;
 import com.jia.base.BasePresenter;
 import com.jia.libnet.bean.news.NewsBean;
+import com.jia.libui.utils.SPUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -35,6 +39,7 @@ import org.greenrobot.eventbus.Subscribe;
  */
 public class NewsDetailActivity extends BaseActivity {
 
+    private AppBarLayout appbar;
     private Toolbar toolbar;
     private SwipeRefreshLayout swipe;
     private WebView webView;
@@ -51,6 +56,8 @@ public class NewsDetailActivity extends BaseActivity {
     private String desc;
     private String groupId;
     private String itemId;
+
+    private  String theme;
 
     @Override
     protected void initActivityView(Bundle savedInstanceState) {
@@ -69,6 +76,7 @@ public class NewsDetailActivity extends BaseActivity {
         } else {
             haveImg = true;
             setContentView(R.layout.activity_news_detail_img);
+            appbar = findViewById(R.id.appbar);
         }
     }
 
@@ -80,7 +88,8 @@ public class NewsDetailActivity extends BaseActivity {
         if (haveImg)
             backdrop = findViewById(R.id.backdrop);
 
-        swipe.setColorSchemeResources(R.color.colorPrimary);
+        theme = SPUtils.getData(this, "theme", "#3F51B5");
+        swipe.setColorSchemeColors(Color.parseColor(theme));
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -90,7 +99,29 @@ public class NewsDetailActivity extends BaseActivity {
 
         initToolBar();
 
+        initAppBar();
+
         initWebView();
+    }
+
+    private void initAppBar() {
+        if (appbar == null) return;
+        appbar.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                Log.d("STATE", state.name());
+                if (state == State.EXPANDED) {
+                    //展开状态
+                    toolbar.setBackgroundColor(Color.parseColor("#00000000"));
+                } else if (state == State.COLLAPSED) {
+                    //折叠状态
+                    toolbar.setBackgroundColor(Color.parseColor(theme));
+                } else {
+                    //中间状态
+                    toolbar.setBackgroundColor(Color.parseColor("#00000000"));
+                }
+            }
+        });
     }
 
     /**

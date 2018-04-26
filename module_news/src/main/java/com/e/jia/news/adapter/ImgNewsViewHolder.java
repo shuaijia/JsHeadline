@@ -45,7 +45,7 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
 
     @Override
     public void bindView(NewsBean.DataEntity data) {
-        tv_title.setText(data.getTitle()+"");
+        tv_title.setText(data.getTitle() + "");
         tv_abstract.setText(data.getAbstractX() + "");
 
         Glide.with(itemView.getContext())
@@ -91,9 +91,9 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
         });
     }
 
-    /*
-* 将时间戳转换为时间
-*/
+    /**
+     * 将时间戳转换为时间
+     */
     public static String stampToDate(String s) {
         String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");

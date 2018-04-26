@@ -7,6 +7,7 @@ import android.os.Looper;
 import com.blankj.utilcode.util.Utils;
 import com.elbbbird.android.socialsdk.SocialSDK;
 import com.jia.base.annotation.Action;
+import com.zhy.changeskin.SkinManager;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -44,6 +45,9 @@ public class BaseApplication extends Application {
         this.mMainThreadID = android.os.Process.myTid();
         this.mMainThreadLooper = getMainLooper();
         this.mMainThreadHandler = new Handler();
+
+        // 换肤初始化
+        SkinManager.getInstance().init(this);
 
         getAllActivities();
 
