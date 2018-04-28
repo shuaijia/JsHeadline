@@ -1,5 +1,6 @@
 package com.mangosteen.headline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -97,7 +98,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                         break;
                     case R.id.nav_camera:
 
-                        ThemeDialog dialog=new ThemeDialog(MainActivity.this);
+                        ThemeDialog dialog = new ThemeDialog(MainActivity.this);
                         dialog.show();
 
                         break;
@@ -233,7 +234,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                Snackbar.make(toolbar, "搜索", Snackbar.LENGTH_LONG).show();
+
+                // 跳转设置
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+
                 break;
         }
         return false;
