@@ -8,6 +8,7 @@ import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
 import com.jia.libnet.bean.photo.PhotoCommentBean;
 import com.jia.libnet.bean.search.SearchRecommentBean;
+import com.jia.libnet.bean.search.SearchResultBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
 
 import java.io.IOException;
@@ -236,17 +237,25 @@ public class HttpMethod {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
-
     }
 
     /**
      * 获获取热门搜素列表
      */
-    public void getSearchHotWords( Subscriber<SearchRecommentBean> subscriber) {
+    public void getSearchHotWords(Subscriber<SearchRecommentBean> subscriber) {
         service.getSearchRecomment()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+    }
 
+    /**
+     * 获获取热门搜素列表
+     */
+    public void getSearchResult(String keyword, String cur_tab, int offset, Subscriber<SearchResultBean> subscriber) {
+        service.getSearchResult(keyword, cur_tab, offset)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
     }
 }

@@ -2,6 +2,7 @@ package com.mangosteen.headline.model;
 
 import com.jia.libnet.HttpMethod;
 import com.jia.libnet.bean.search.SearchRecommentBean;
+import com.jia.libnet.bean.search.SearchResultBean;
 import com.mangosteen.headline.contract.SearchContract;
 
 import rx.Subscriber;
@@ -32,6 +33,30 @@ public class SearchModelImpl implements SearchContract.SearchModel {
                     callback.onSuccess(searchRecommentBean);
                 } else {
                     callback.onFail();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getSearchReuslt(String keyword, String cur_tab, int offset, final SearchContract.OnGetSearchResultCallback callback) {
+        HttpMethod.getInstance().getSearchResult(keyword, cur_tab, offset, new Subscriber<SearchResultBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                callback.onFail("网络错误");
+            }
+
+            @Override
+            public void onNext(SearchResultBean searchResultBean) {
+                if (searchResultBean != null) {
+                    callback.onSuccess(searchResultBean);
+                } else {
+                    callback.onFail("网络错误");
                 }
             }
         });
