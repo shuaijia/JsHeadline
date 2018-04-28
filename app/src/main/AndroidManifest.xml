@@ -46,7 +46,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".view.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.e.jia.news.view.ChannelActivity"

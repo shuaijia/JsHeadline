@@ -29,6 +29,7 @@ import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
 import com.mangosteen.headline.dialog.ThemeDialog;
+import com.mangosteen.headline.view.SearchActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 

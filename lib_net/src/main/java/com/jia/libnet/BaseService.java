@@ -4,6 +4,7 @@ import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
 import com.jia.libnet.bean.photo.PhotoCommentBean;
+import com.jia.libnet.bean.search.SearchRecommentBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
 
 import retrofit2.http.GET;
@@ -52,4 +53,11 @@ public interface BaseService {
     Observable<PhotoCommentBean> getPhotoComment(
             @Query("group_id") String groupId,
             @Query("offset") String offset);
+
+    /**
+     * 获取搜索推荐
+     * http://is.snssdk.com/search/suggest/wap/initial_page/?from=feed&sug_category=__all__&iid=10344168417&device_id=36394312781&format=json
+     */
+    @GET("http://is.snssdk.com/search/suggest/wap/initial_page/?from=feed&sug_category=__all__&iid=10344168417&device_id=36394312781&format=json")
+    Observable<SearchRecommentBean> getSearchRecomment();
 }

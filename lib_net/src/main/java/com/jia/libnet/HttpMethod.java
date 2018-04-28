@@ -7,8 +7,8 @@ import com.jia.libnet.bean.news.NewsBean;
 import com.jia.libnet.bean.news.NewsCommentBean;
 import com.jia.libnet.bean.photo.PhotoArticleBean;
 import com.jia.libnet.bean.photo.PhotoCommentBean;
+import com.jia.libnet.bean.search.SearchRecommentBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
-import com.jia.libnet.bean.video.VideoArticleBean;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -233,6 +233,17 @@ public class HttpMethod {
      */
     public void getPhotoCommentList(String groupId, String offset, Subscriber<PhotoCommentBean> subscriber) {
         service.getPhotoComment(groupId, offset)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+
+    }
+
+    /**
+     * 获获取热门搜素列表
+     */
+    public void getSearchHotWords( Subscriber<SearchRecommentBean> subscriber) {
+        service.getSearchRecomment()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
