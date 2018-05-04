@@ -20,6 +20,7 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             app:tabIndicatorHeight="0dp"
+            app:tabTextColor="@android:color/darker_gray"
             app:tabSelectedTextColor="@color/Blue" />
 
         <android.support.design.widget.CoordinatorLayout
