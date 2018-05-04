@@ -12,17 +12,5 @@
         android:src="@drawable/ic_launcher"
         android:layout_centerInParent="true" />
 
-    <yanzhikai.textpath.SyncTextPathView
-        android:id="@+id/path_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:duration="2500"
-        app:showPainter="true"
-        app:text="HeadLine"
-        app:textInCenter="true"
-        app:textSize="30sp"
-        android:layout_weight="1"
-        app:paintStrokeColor="#ff0000"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/imageView"/>
+
 </RelativeLayout>

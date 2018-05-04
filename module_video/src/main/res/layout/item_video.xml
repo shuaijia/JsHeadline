@@ -97,7 +97,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="5dp"
-                    android:background="@drawable/shape_video_dur"
+                    android:background="@drawable/shape_video_dur2"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:text="5:00"
