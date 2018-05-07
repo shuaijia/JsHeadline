@@ -29,5 +29,7 @@ public class SplashActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
+        startActivity(new Intent(this,MainActivity.class));
+
     }
 }
