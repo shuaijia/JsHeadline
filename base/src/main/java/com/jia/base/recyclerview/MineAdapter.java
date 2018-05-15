@@ -19,6 +19,8 @@ import java.util.List;
 
 public class MineAdapter extends RecyclerView.Adapter<MineAdapter.MineViewHolder> {
 
+
+
     private Context context;
 
     private List<String> list;

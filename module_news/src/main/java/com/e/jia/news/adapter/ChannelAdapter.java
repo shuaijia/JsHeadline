@@ -19,6 +19,10 @@ import java.util.List;
 
 public class ChannelAdapter extends RecyclerView.Adapter<ChannelAdapter.ChannelViewHolder> {
 
+    public static void add(){
+
+    }
+
     private Context context;
     private List<NewsChannel.Channel> list;
     private boolean isMine;
