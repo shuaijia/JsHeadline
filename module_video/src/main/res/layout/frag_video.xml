@@ -8,11 +8,12 @@
         android:id="@+id/tl_video_titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:tabTextColor="@color/gray"
-        app:tabMode="scrollable"
+        android:background="@color/tool_bar_color"
+        android:tag="skin:tab_bar_color:background"
         app:tabIndicatorColor="@color/white"
-        app:tabSelectedTextColor="@color/white" />
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/gray" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_video_content"

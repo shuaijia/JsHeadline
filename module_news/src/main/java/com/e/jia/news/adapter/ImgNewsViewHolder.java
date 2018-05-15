@@ -49,11 +49,14 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
         tv_abstract.setText(data.getAbstractX() + "");
 
         Glide.with(itemView.getContext())
-                .load(data.getImage_list().get(0).getUrl()+"")
+                .load(data.getImage_list().get(0).getUrl() + "")
                 .into(iv_image);
 
         StringBuffer extra = new StringBuffer();
-        extra.append(data.getMedia_name() + " ");
+        if (TextUtils.isEmpty(data.getMedia_name()) || data.getMedia_name().equals("null"))
+            extra.append("推广 ");
+        else
+            extra.append(data.getMedia_name() + " ");
         if (data.getComment_count() == 0) {
             extra.append("暂无评论 ");
         } else {
@@ -83,14 +86,14 @@ public class ImgNewsViewHolder extends NewsBaseViewHolder {
                         .setHeight((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, itemView.getContext().getResources().getDisplayMetrics()))
                         .setAnimation(R.style.anim_pop)
                         .build()
-                        .showAsLocation(iv_dots, Gravity.LEFT| Gravity.TOP, 100, 0);
+                        .showAsLocation(iv_dots, Gravity.LEFT | Gravity.TOP, 100, 0);
             }
         });
     }
 
-    /*
-* 将时间戳转换为时间
-*/
+    /**
+     * 将时间戳转换为时间
+     */
     public static String stampToDate(String s) {
         String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");

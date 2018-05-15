@@ -27,6 +27,8 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     private Context context;
     private List<PhotoArticleBean.DataBean> list = new ArrayList<>();
 
+    private OnItemClickListener listener;
+
     public PhotoListAdapter(Context context) {
         this.context = context;
     }
@@ -34,7 +36,6 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     public void setData(List<PhotoArticleBean.DataBean> list) {
         this.list.clear();
         this.list = list;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
     }
 
     @Override
-    public void onBindViewHolder(PhotoListViewHolder holder, int position) {
+    public void onBindViewHolder(PhotoListViewHolder holder, final int position) {
 
         Glide.with(context)
                 .load(list.get(position).getMedia_avatar_url())
@@ -68,6 +69,22 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
         holder.tv_title.setText(list.get(position).getTitle() + "");
 
         holder.tv_extra.setText(list.get(position).getSource() + "-" + list.get(position).getComments_count() + "条评论");
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null)
+                    listener.onClick(list.get(position));
+            }
+        });
+    }
+
+    public OnItemClickListener getListener() {
+        return listener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     public class PhotoListViewHolder extends RecyclerView.ViewHolder {
@@ -88,5 +105,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Phot
             iv_1 = itemView.findViewById(R.id.iv_1);
             iv_2 = itemView.findViewById(R.id.iv_2);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onClick(PhotoArticleBean.DataBean data);
     }
 }

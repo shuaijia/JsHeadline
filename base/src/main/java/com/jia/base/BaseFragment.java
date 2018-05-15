@@ -33,7 +33,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends RxFrag
         super.onCreate(savedInstanceState);
 
         // 若使用BindEventBus注解，则绑定EventBus
-        if(this.getClass().isAnnotationPresent(BindEventBus.class)){
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBusUtils.register(this);
         }
 
@@ -79,7 +79,6 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends RxFrag
         initFragmentData(savedInstanceState);
     }
 
-
     /**
      * 完成打气筒操作
      */
@@ -109,7 +108,7 @@ public abstract class BaseFragment<V, T extends BasePresenter<V>> extends RxFrag
     public void onDestroy() {
         super.onDestroy();
         // 若使用BindEventBus注解，则解绑定EventBus
-        if(this.getClass().isAnnotationPresent(BindEventBus.class)){
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
             EventBusUtils.unregister(this);
         }
 

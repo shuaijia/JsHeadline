@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
@@ -50,4 +50,10 @@ dependencies {
     compile 'com.ocnyang:contourview:1.0.0'
     // tabTargetView
     compile 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+    // 换肤
+    compile 'com.zhy:changeskin:4.0.2'
+    // 状态栏 工具
+    compile 'com.jaeger.statusbarutil:library:1.4.0'
+    // 标签
+    compile 'com.google.android:flexbox:0.2.5'
 }

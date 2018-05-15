@@ -1,5 +1,6 @@
 package com.mangosteen.headline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 
 import com.e.jia.news.view.NewsFragment;
 import com.e.jia.picture.view.PictureFragment;
-import com.e.jia.video.VideoFragment;
+import com.e.jia.video.view.VideoFragment;
 import com.elbbbird.android.socialsdk.SocialSDK;
 import com.elbbbird.android.socialsdk.model.SocialShareScene;
 import com.elbbbird.android.socialsdk.otto.ShareBusEvent;
@@ -27,6 +28,8 @@ import com.jia.base.BasePresenter;
 import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
+import com.mangosteen.headline.dialog.ThemeDialog;
+import com.mangosteen.headline.view.SearchActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -62,7 +65,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     protected void initActivityView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
     }
 
     @Override
@@ -96,7 +98,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                         Snackbar.make(navigation, "个人", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_camera:
-                        Snackbar.make(navigation, "切换主题", Snackbar.LENGTH_SHORT).show();
+
+                        ThemeDialog dialog = new ThemeDialog(MainActivity.this);
+                        dialog.show();
+
                         break;
                     case R.id.nav_share:
                         Snackbar.make(navigation, "设置", Snackbar.LENGTH_SHORT).show();
@@ -230,7 +235,10 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                Snackbar.make(toolbar, "搜索", Snackbar.LENGTH_LONG).show();
+
+                // 跳转设置
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+
                 break;
         }
         return false;

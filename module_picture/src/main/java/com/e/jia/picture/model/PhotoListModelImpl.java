@@ -17,7 +17,7 @@ import rx.Subscriber;
 public class PhotoListModelImpl implements PhotoListContract.PhotoListModel {
     @Override
     public void onGetPhotoList(String category, String time, final PhotoListContract.OnGetListCallback callback) {
-        HttpMethod.getInstance().getPhotoArticleLisr(category, time, new Subscriber<PhotoArticleBean>() {
+        HttpMethod.getInstance().getPhotoArticleList(category, time, new Subscriber<PhotoArticleBean>() {
             @Override
             public void onCompleted() {
 

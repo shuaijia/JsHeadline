@@ -1,5 +1,6 @@
 package com.e.jia.news.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.e.jia.news.contract.NewsCommentContract;
 import com.e.jia.news.presenter.NewsCommentPresenter;
 import com.jia.base.BaseActivity;
 import com.jia.libnet.bean.news.NewsCommentBean;
+import com.jia.libui.utils.SPUtils;
 
 import java.util.List;
 
@@ -56,7 +58,8 @@ public class NewsCommentActivity extends BaseActivity<NewsCommentContract.NewsCo
         toolbar = findViewById(R.id.toolbar);
         recycler_view = findViewById(R.id.recycler_view);
         refresh_layout = findViewById(R.id.refresh_layout);
-        refresh_layout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        String theme= SPUtils.getData(this,"theme","#3F51B5");
+        refresh_layout.setColorSchemeColors(Color.parseColor(theme));
         refresh_layout.setOnRefreshListener(this);
         refresh_layout.setRefreshing(true);
         tv_no_data = findViewById(R.id.tv_no_data);

@@ -194,8 +194,17 @@ public class NewsBean  {
         private boolean has_image;
         private int is_bury;
         private long group_id;
+        private String image_url;
 //        private MiddleImageEntity middle_image;
         private List<ImageListEntity> image_list;
+
+        public String getImage_url() {
+            return image_url;
+        }
+
+        public void setImage_url(String image_url) {
+            this.image_url = image_url;
+        }
 
         public String getMedia_name() {
             return media_name;
