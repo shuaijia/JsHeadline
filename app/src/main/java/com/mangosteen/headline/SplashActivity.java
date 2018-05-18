@@ -30,6 +30,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         startActivity(new Intent(this,MainActivity.class));
+        finish();
 
     }
 }
