@@ -40,6 +40,7 @@ import butterknife.ButterKnife;
 @Action("MainActivity")
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
 
+    //
     private static final int TAB_NEWS = 0;
     private static final int TAB_PICTURE = 1;
     private static final int TAB_VIDEO = 2;
