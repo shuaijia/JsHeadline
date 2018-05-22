@@ -1,6 +1,5 @@
 package com.e.jia.news.model;
 
-import android.util.Log;
 
 import com.e.jia.news.contract.NewsListContract;
 import com.jia.libnet.HttpMethod;

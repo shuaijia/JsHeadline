@@ -23,6 +23,11 @@ public interface BaseService {
     @POST("api/article/recent/")
     Observable<NewsBean> getNewsByTag(@Query("source") String source, @Query("count") String count, @Query("category") String category, @Query("as") String as);
 
+    @GET("http://is.snssdk.com/api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13")
+    Observable<MultiNewsArticleBean> getNewsArticle(
+            @Query("category") String category,
+            @Query("max_behot_time") String maxBehotTime);
+
     @POST("api/comment/list/")
     Observable<NewsCommentBean> getNewsComment(@Query("group_id") String group_id, @Query("item_id") String item_id, @Query("offset") String offset, @Query("count") String count);
 

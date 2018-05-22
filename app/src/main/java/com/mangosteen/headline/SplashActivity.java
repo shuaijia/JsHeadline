@@ -16,7 +16,6 @@ import android.view.WindowManager;
  * Created by jia on 2018/4/28.
  * 人之所以能，是相信能。
  */
-
 public class SplashActivity extends Activity {
 
 
