@@ -7,6 +7,7 @@
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
     android:background="@color/white"
+    android:id="@+id/cv_content"
     app:cardElevation="1dp">
 
     <RelativeLayout
@@ -90,7 +91,7 @@
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/tv_dur"
+                    android:id="@+id/tv_dur22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"

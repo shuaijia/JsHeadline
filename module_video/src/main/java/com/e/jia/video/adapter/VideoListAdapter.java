@@ -1,6 +1,7 @@
 package com.e.jia.video.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.e.jia.video.R;
 import com.jia.libnet.bean.video.VideoArticleBean;
@@ -60,6 +62,13 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
         Glide.with(context)
                 .load(list.get(position).getVideo_detail_info().getDetail_video_large_image().getUrl() + "")
                 .into(holder.iv_video_image);
+
+        holder.cv_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showLong("点击");
+            }
+        });
     }
 
     @Override
@@ -75,6 +84,7 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
         TextView tv_title;
         ImageView iv_video_image;
         TextView tv_dur;
+        CardView cv_content;
 
         public VideoListViewHolder(View itemView) {
             super(itemView);
@@ -84,7 +94,8 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
             iv_dots = itemView.findViewById(R.id.iv_dots);
             tv_title = itemView.findViewById(R.id.tv_title);
             iv_video_image = itemView.findViewById(R.id.iv_video_image);
-            tv_dur = itemView.findViewById(R.id.tv_dur);
+            tv_dur = itemView.findViewById(R.id.tv_dur22);
+            cv_content=itemView.findViewById(R.id.cv_content);
         }
     }
 }
