@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:tag="skin:tool_bar_color:background"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="设置"
+        app:titleTextColor="@color/white" />
 
     <include layout="@layout/content_setting" />
 
