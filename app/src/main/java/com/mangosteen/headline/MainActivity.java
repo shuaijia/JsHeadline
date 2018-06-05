@@ -90,6 +90,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     }
 
     private void initNavigationView() {
+        navigation.setItemIconTintList(null);// 解决图标没颜色的问题
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
