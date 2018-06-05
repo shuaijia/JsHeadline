@@ -114,7 +114,6 @@ public class PhotoListFragment extends BaseFragment<PhotoListContract.PhotoListV
 
     @Override
     public void onFail(String info) {
-        ToastUtils.showLong(info + "");
         tv_no_data.setVisibility(View.VISIBLE);
         tv_no_data.setText(info + "");
         refresh_layout.setRefreshing(false);

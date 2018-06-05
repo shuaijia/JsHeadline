@@ -29,7 +29,9 @@ import com.jia.base.annotation.Action;
 import com.jia.base.annotation.BindEventBus;
 import com.jia.base.eventbus.Event;
 import com.mangosteen.headline.dialog.ThemeDialog;
+import com.mangosteen.headline.view.AboutMeActivity;
 import com.mangosteen.headline.view.SearchActivity;
+import com.mangosteen.headline.view.SettingActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -97,7 +99,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
 
                 switch (item.getItemId()) {
                     case R.id.nav_manage:
-                        Snackbar.make(navigation, "个人", Snackbar.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(MainActivity.this, AboutMeActivity.class));
+
                         break;
                     case R.id.nav_camera:
 
@@ -106,7 +110,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
 
                         break;
                     case R.id.nav_share:
-                        Snackbar.make(navigation, "设置", Snackbar.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(MainActivity.this, SettingActivity.class));
+
                         break;
                     case R.id.nav_send:
                         SocialSDK.shareTo(MainActivity.this, new SocialShareScene(2, "Headline", "Headline", "你关心的才是头条", "https://github.com/shuaijia", "https://github.com/kb18519142009"));

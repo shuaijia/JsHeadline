@@ -31,7 +31,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
@@ -45,6 +44,9 @@
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.AboutMeActivity"
+            android:label="About Me" />
         <activity
             android:name=".view.SearchActivity"
             android:screenOrientation="portrait" />
@@ -82,6 +84,10 @@
                 <data android:scheme="tencent1106751527" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

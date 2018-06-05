@@ -129,8 +129,6 @@ public class NewsListFragment extends BaseFragment<NewsListContract.NewsListView
     public void onRefreshFail(String info) {
         refresh_layout.setRefreshing(false);
 
-        Toast.makeText(getContext(), "" + info, Toast.LENGTH_LONG).show();
-
         tv_no_data.setVisibility(View.VISIBLE);
         tv_no_data.setText("暂无数据");
     }
