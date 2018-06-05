@@ -46,7 +46,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.AboutMeActivity"
-            android:label="About Me" />
+            android:label="About Me"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.SearchActivity"
             android:screenOrientation="portrait" />
@@ -86,8 +87,14 @@
         </activity>
         <activity
             android:name=".view.SettingActivity"
-            android:label="@string/title_activity_setting"
-            android:theme="@style/AppTheme"></activity>
+            android:label="设置"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.AboutActivity"
+            android:label="关于"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

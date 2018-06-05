@@ -6,19 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.mangosteen.headline.view.SettingActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:tag="skin:tool_bar_color:background"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <include layout="@layout/content_setting" />
 
