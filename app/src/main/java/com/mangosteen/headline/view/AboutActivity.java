@@ -110,13 +110,14 @@ public class AboutActivity extends BaseActivity {
                 "- 模块化开发，结构分为底层net、ui和utils、base库、功能module，主app；\n" +
                 "- 网络框架使用Retrofit+RxJava+OkHttp+Glide进行封装；\n" +
                 "- 对OkHttp请求头进行处理，添加cookie和保存cookie；\n" +
+                "- 使用Retrofit+RxJava做多线程下载、断点续传；\n" +
                 "- 对ExoPlayer进行封装，做视频播放器；\n" +
                 "- 对EventBus进行封装，使用注解来注册，进行消息发送和处理；\n" +
                 "- BaseActivity与BaseFragment封装，配合MVP模式框架；\n" +
                 "- 使用自定义注解实现Router方案；\n" +
-                "- 使用 7.0 新工具 DiffUtil , 不再无脑 notifyDataSetChanged\n" +
-                "- 使用 ItemTouchHelper 实现今日头条的频道排序、频道移动\n" +
-                "- 使用AndroidChangeSkin实现应用内换肤";
+                "- 使用 7.0 新工具 DiffUtil , 不再无脑 notifyDataSetChanged；\n" +
+                "- 使用 ItemTouchHelper 实现今日头条的频道排序、频道移动；\n" +
+                "- 使用AndroidChangeSkin实现应用内换肤。";
 
         tv_points.setText(points);
     }

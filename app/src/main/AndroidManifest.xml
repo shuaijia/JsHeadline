@@ -103,6 +103,9 @@
             android:name=".view.AboutMeKbActivity"
             android:label="About Me"
             android:screenOrientation="portrait" />
+
+        <activity android:name="com.e.jia.video.view.VideoDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
 
 </manifest>
