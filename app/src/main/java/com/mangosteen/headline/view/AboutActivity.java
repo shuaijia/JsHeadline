@@ -112,6 +112,7 @@ public class AboutActivity extends BaseActivity {
                 "- 对OkHttp请求头进行处理，添加cookie和保存cookie；\n" +
                 "- 使用Retrofit+RxJava做多线程下载、断点续传；\n" +
                 "- 对ExoPlayer进行封装，做视频播放器；\n" +
+                "- 自定义View实现流畅弹幕；\n" +
                 "- 对EventBus进行封装，使用注解来注册，进行消息发送和处理；\n" +
                 "- BaseActivity与BaseFragment封装，配合MVP模式框架；\n" +
                 "- 使用自定义注解实现Router方案；\n" +

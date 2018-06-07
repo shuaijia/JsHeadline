@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
+        android:text="四大行高给好的那段时光给好似规划局大四宫颈癌共IER级个 阿拉山口就打个添加 埃里克告诉你org"
+        android:textColor="#555"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.jia.libui.CircularImage
+            android:id="@+id/iv_media_head"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+        <TextView
+            android:id="@+id/tv_media_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="我爱北京"
+            android:textColor="#999"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_video_share"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@mipmap/ic_share"/>
+
+        <ImageView
+            android:id="@+id/tv_video_download"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="15dp"
+            android:padding="1dp"
+            android:src="@mipmap/ic_download"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="#eee" />
+</LinearLayout>
