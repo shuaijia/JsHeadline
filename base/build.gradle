@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -45,4 +45,6 @@ dependencies {
 
     // 分享
     compile 'com.elbbbird.android:socialsdk:0.2.0@aar'
+    // 播放器
+    compile 'com.github.shuaijia:JsPlayer:v1.5.1'
 }
