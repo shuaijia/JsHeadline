@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.mangosteen.headline.view.AboutActivity">
 
@@ -29,11 +30,46 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:background="#425">
+                android:layout_height="280dp">
 
+
+                <LinearLayout
+                    android:id="@+id/ll_base_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@mipmap/ic_launcher_round" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Headline"
+                        android:textColor="#000"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="你关心的  都在Headline"
+                    android:layout_below="@id/ll_base_info"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#eeeeee" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:text="康白、贾帅"
                 android:textColor="#999999"
@@ -70,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:text="1.0.0"
                 android:textColor="#999999"
@@ -93,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:text="https://github.com/shuaijia/Headline"
                 android:textColor="#999999"
@@ -117,8 +153,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
+                android:lineSpacingExtra="3dp"
                 android:text="https://github.com/shuaijia/Headline"
                 android:textColor="#999999"
                 android:textSize="12sp" />

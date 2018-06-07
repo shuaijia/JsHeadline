@@ -45,10 +45,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.AboutMeActivity"
-            android:label="About Me"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".view.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -95,6 +91,14 @@
             android:label="关于"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.AboutMeJsActivity"
+            android:label="About Me"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.AboutMeKbActivity"
+            android:label="About Me"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

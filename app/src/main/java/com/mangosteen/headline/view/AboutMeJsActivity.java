@@ -15,7 +15,7 @@ import com.mangosteen.headline.R;
  * 人之所以能，是相信能。
  */
 
-public class AboutMeActivity extends AppCompatActivity {
+public class AboutMeJsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -25,7 +25,7 @@ public class AboutMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_about_me);
+        setContentView(R.layout.activity_about_me_js);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar_layout= (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);

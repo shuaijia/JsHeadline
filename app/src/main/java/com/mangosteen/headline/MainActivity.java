@@ -108,11 +108,11 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                         dialog.show();
 
                         break;
-                    case R.id.nav_share:
-
-                        startActivity(new Intent(MainActivity.this, SettingActivity.class));
-
-                        break;
+//                    case R.id.nav_share:
+//
+//                        startActivity(new Intent(MainActivity.this, SettingActivity.class));
+//
+//                        break;
                     case R.id.nav_send:
 
                         SocialSDK.shareTo(MainActivity.this, new SocialShareScene(2, "Headline", "Headline", "你关心的才是头条", "https://github.com/shuaijia", "https://github.com/kb18519142009"));
