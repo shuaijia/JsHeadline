@@ -80,7 +80,7 @@ public class VideoListFragment extends BaseFragment<VideoListContract.VideoListV
     @Override
     public void onResume() {
         super.onResume();
-        String theme= SPUtils.getData(getActivity(),"theme","#3F51B5");
+        String theme = SPUtils.getData(getActivity(), "theme", "#3F51B5");
         refresh_layout.setColorSchemeColors(Color.parseColor(theme));
     }
 

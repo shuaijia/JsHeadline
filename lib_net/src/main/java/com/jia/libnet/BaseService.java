@@ -7,6 +7,7 @@ import com.jia.libnet.bean.photo.PhotoCommentBean;
 import com.jia.libnet.bean.search.SearchRecommentBean;
 import com.jia.libnet.bean.search.SearchResultBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
+import com.jia.libnet.bean.video.VideoCommentBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -80,4 +81,12 @@ public interface BaseService {
             @Query("keyword") String keyword,
             @Query("cur_tab") String curTab,
             @Query("offset") int offset);
+
+    /**
+     * 获取视频评论列表
+     * http://is.snssdk.com/api/2/wap/search_content/?from=search_tab&keyword=123&iid=10344168417&device_id=36394312781&count=10&cur_tab=1&format=json&offset=20
+     */
+    @GET("http://is.snssdk.com/article/v53/tab_comments/")
+    Observable<VideoCommentBean> getVideoComments(@Query("group_id") String group_id, @Query("offset") int offset);
+
 }

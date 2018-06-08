@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.e.jia.video.R;
 import com.e.jia.video.view.VideoDetailActivity;
@@ -69,7 +68,11 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, VideoDetailActivity.class);
-                intent.putExtra("videoId", list.get(position).getItem_id());
+                intent.putExtra("videoId", list.get(position).getGroup_id() + "");
+                intent.putExtra("holder", list.get(position).getVideo_detail_info().getDetail_video_large_image().getUrl());
+                intent.putExtra("mediaName", list.get(position).getMedia_name());
+                intent.putExtra("mediaAvatar", list.get(position).getMedia_info().getAvatar_url());
+                intent.putExtra("title", list.get(position).getTitle());
                 context.startActivity(intent);
             }
         });

@@ -30,7 +30,6 @@ import com.jia.base.eventbus.Event;
 import com.mangosteen.headline.dialog.ThemeDialog;
 import com.mangosteen.headline.view.AboutActivity;
 import com.mangosteen.headline.view.SearchActivity;
-import com.mangosteen.headline.view.SettingActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 

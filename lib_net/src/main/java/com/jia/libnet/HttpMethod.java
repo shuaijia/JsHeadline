@@ -10,8 +10,11 @@ import com.jia.libnet.bean.photo.PhotoCommentBean;
 import com.jia.libnet.bean.search.SearchRecommentBean;
 import com.jia.libnet.bean.search.SearchResultBean;
 import com.jia.libnet.bean.video.MultiNewsArticleBean;
+import com.jia.libnet.bean.video.VideoCommentBean;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
@@ -256,6 +259,32 @@ public class HttpMethod {
         service.getSearchResult(keyword, cur_tab, offset)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获获取热门搜素列表
+     */
+    public void getVideoComments(String videoId, int offset, Subscriber<List<VideoCommentBean.DataEntity.CommentEntity>> subscriber) {
+        service.getVideoComments(videoId, offset)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Func1<VideoCommentBean, List<VideoCommentBean.DataEntity>>() {
+                    @Override
+                    public List<VideoCommentBean.DataEntity> call(VideoCommentBean bean) {
+                        return bean.getData();
+                    }
+                })
+                .map(new Func1<List<VideoCommentBean.DataEntity>, List<VideoCommentBean.DataEntity.CommentEntity>>() {
+                    @Override
+                    public List<VideoCommentBean.DataEntity.CommentEntity> call(List<VideoCommentBean.DataEntity> dataEntities) {
+                        List<VideoCommentBean.DataEntity.CommentEntity> comments = new ArrayList<>();
+                        for (VideoCommentBean.DataEntity data : dataEntities) {
+                            comments.add(data.getComment());
+                        }
+                        return comments;
+                    }
+                })
                 .subscribe(subscriber);
     }
 }

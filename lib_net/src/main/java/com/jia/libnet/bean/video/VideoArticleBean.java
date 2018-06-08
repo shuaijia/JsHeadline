@@ -1169,7 +1169,7 @@ public class VideoArticleBean  {
         private String video_id;
         private int video_watching_count;
         private int video_watch_count;
-        private List<?> video_url;
+        private List<String> video_url;
 
         public VideoDetailInfoBean(Parcel in) {
             group_flags = in.readInt();
@@ -1286,11 +1286,11 @@ public class VideoArticleBean  {
             this.video_watch_count = video_watch_count;
         }
 
-        public List<?> getVideo_url() {
+        public List<String> getVideo_url() {
             return video_url;
         }
 
-        public void setVideo_url(List<?> video_url) {
+        public void setVideo_url(List<String> video_url) {
             this.video_url = video_url;
         }
 

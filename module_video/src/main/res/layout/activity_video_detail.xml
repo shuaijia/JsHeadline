@@ -17,7 +17,8 @@
             android:id="@+id/iv_video_holder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000" />
+            android:background="#000"
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/iv_play"
@@ -27,14 +28,19 @@
             android:src="@mipmap/ic_play" />
     </RelativeLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_video_detail"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_video_info"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_video_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_video_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </RelativeLayout>
 </LinearLayout>
