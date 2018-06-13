@@ -1,11 +1,11 @@
 # Headline
-仿头条app，MVP模式，Retrofit+RxJava+OkHttp+Glide框架等，持续开发中。。。
+仿头条app，MVP模式，Retrofit+RxJava+OkHttp+Glide框架等，持续优化中。。。
 
 其中数据来自[头条Api](https://github.com/iMeiji/Toutiao/wiki/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1Api%E5%88%86%E6%9E%90)
 
 ### 截图
 
-<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/a.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/b.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/c.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/d.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/e.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/f.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/g.png"/>
+<img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/a.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/b.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/c.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/d.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/e.png"/> <img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/f.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/g.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/h.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/i.png"/><img width="240" height="466" src="https://raw.githubusercontent.com/kb18519142009/Headline/master/img/j.png"/>
 
 ### point
 
